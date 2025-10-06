@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #f9faff; 
+    color: #333;
+}
+
+.firstsection {
+
+    width:100%;
+    height: 80vh;
+    background: linear-gradient(rgba(0, 0, 50, 0.3), rgba(0, 0, 50, 0.3)),
+                url("images/pexels-toan-van-1745332-14445098.jpg") center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+
+ 
+}
+
+.firstnav {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    background: rgba(255, 255, 255, 0.8);
+ 
+   
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    font-family: "Montserrat", sans-serif;
+    color: #2b3a67;
+}
+
+.firstnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.firstnav li {
+    display: inline-block;
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #444;
+    cursor: pointer;
+ 
+    transition: all 0.3s ease;
+}
+
+.firstnav li:hover {
+    color: #2b3a67;
+    transform: translateY(-2px);
+}
+
+.firstnav li::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #2b3a67;
+    transition: width 0.3s;
+    margin: auto;
+}
+
+.firstnav li:hover::after {
+    width: 100%;
+}
+
+
+.innerfirst {
+    margin:0 auto;
+
+    width: 90%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0 50px;
+
+    flex-wrap: wrap;
+}
+
+.intro {
+    margin:0;
+    width: 45%;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:50px;
+
+}
+
+.para {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.picture {
+
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    min-width:400px;
+}
+
+.intropic {
+    border-radius: 20px;
+    width: 90%;
+   
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease;
+}
+
+.intropic:hover {
+    transform: scale(1.05);
+}
+#sign, #find{
+
+   /* box-shadow: 2px 2px 5px rgba(0,0,0,0.9); */
+
+        font-size: 16px;
+    font-weight: 500;
+color:white;
+    background-color: rgb(71, 110, 214);
+        font-family: "Inter", sans-serif;
+    text-align: center;
+    width:25%;
+    border-radius: 8px;
+position:relative;
+bottom:50px;
+
+}
+
+/* SECOND SECTION */
+.secondsection {
+    background: #fdfdfd;
+    width: 90%;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05); /* soft shadow around container */
+}
+
+/* Company cards */
+.compfirst, .compsecond, .compthird, 
+.compfourth, .compfifth, .compsixth {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    height: 110px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.compic {
+    border-radius: 10px;
+    object-fit: contain;
+    height: 90%;
+    width: 90%;
+    transition: transform 0.3s ease;
+}
+
+
+.compfirst:hover, .compsecond:hover, .compthird:hover, 
+.compfourth:hover, .compfifth:hover, .compsixth:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+
+.compic:hover {
+    transform: scale(1.1);
+}
+
+.thirdsection{
+    margin: 0 auto;
+    width: 99%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+#search{
+    width: 450px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+}
+.btnsearch{
+    width: 90px;
+    height: 50px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(62, 108, 237);
+    color: white;
+    transition: transform 0.3s ease;
+}
+.btnsearch:hover{
+    transform: scale(1.1);
+}
+.categories{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+    color: rgb(112, 112, 112);
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgb(31, 33, 38);
+    color: rgb(222, 222, 222);
+}
+
+.footer1{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.footer1 li{
+    display: inline-block;
+    margin-top: 50px;
+    margin-right:20px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+}
+.footer2{
+    width: 90%;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    font-family:  "Inter", sans-serif;
+}
+
+.ojtseekers li{
+    margin-right: 100px;
+}
