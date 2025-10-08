@@ -272,6 +272,7 @@ cursor:pointer;
     flex-wrap: wrap;
 }
 .innerkinds{
+    padding:8px;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(138, 144, 148, 0.3);
@@ -298,6 +299,7 @@ border-radius: 8px;
 
 }
 .infokind{
+   text-align: center;
     font-size: 20px;
     font-weight: 600;
     font-family:  "Inter", sans-serif;
@@ -305,11 +307,15 @@ border-radius: 8px;
 }
 .fa-gear, .fa-boxes-packing, .fa-house
 , .fa-magnifying-glass, .fa-network-wired, .fa-utensils, .fa-money-bill-1, .fa-shield-halved{
+    
+    text-align: center;
     padding:10px;
     font-size:30px;
     color:rgb(32, 64, 227);
     background-color: rgb(232, 235, 252);
 }
+
+/* FOURTH SECTION */
 
 .fourthsection{
     display: flex;
@@ -319,6 +325,8 @@ border-radius: 8px;
     flex-wrap: wrap;
     padding: 40px;
     background-color: white;
+    
+    gap:20px;
 }
 
 .fourthsection img{
@@ -328,32 +336,98 @@ border-radius: 8px;
 }
 
 .image-container{
-    margin-top: 80px;
-    margin-bottom: 80px;
-}
-
-.image-item1{
-    display: relative;
-    justify-content: center;
+ width:47%;
+ 
+ border-radius: 10px;
+ padding-top:10px;
+ padding-bottom:10px;
+ background-color:rgb(232, 235, 252);
+    display: flex;
     align-items: center;
-    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.innerimage1{
+
+ 
+width:95%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+
+
 }
 
-.pic1, .pic3{
-    margin-right: 20px;
-    margin-bottom: 20px;
+.innerimage2{
+
+width:95%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+
+
 }
+.image1{
+    width:100%;
+
+    object-fit: cover;
+margin:10px;
+   
+}
+
+.image2{
+
+      width:100%;
+     
+
+    object-fit: cover;
+  
+}
+.image3, .image4{
+
+    margin:10px;
+      width:100%;
+     
+    object-fit: cover;
+
+}
+
+
+
+
 
 .content-container{
-    width: 45%;
-    margin-left: 70px;
+    width: 50%;
+    
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+.content-list{
+    width:95%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .content-title{
     text-align: center;
     font-family:  "Inter", sans-serif;
-    width: 400px;
+   width:95%;
     margin-bottom: 20px;
+ 
 }
 
 .content-icon{
@@ -361,6 +435,9 @@ border-radius: 8px;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+  
+    flex-wrap: wrap;
+    width:90%;
 }
 
 .content-icon i{
@@ -391,6 +468,9 @@ border-radius: 8px;
 .top-ojt, .search, .partnered{
     margin-left: 20px;
 }
+
+
+/* FIFTH SECTION */
 
 .fifthsection {
     position: relative;
@@ -438,7 +518,7 @@ border-radius: 8px;
     background-color: rgb(255, 255, 255);
     color: #2042e3;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 13px;
     margin-bottom: 15px;
 }
 
