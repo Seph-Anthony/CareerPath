@@ -220,10 +220,9 @@ cursor:pointer;
 
 /* THIRD SECTION */
 .thirdsection{
-
     margin-top:80px;
     margin-bottom:40px;
-   
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -262,7 +261,7 @@ cursor:pointer;
 }
 
 .outerkinds, .outerkinds2{
-
+    
     background-color: white;
  
     width:95%;
@@ -274,11 +273,11 @@ cursor:pointer;
 }
 .innerkinds{
     border-style: solid;
-   
+    border-width: 1px;
     border-color: rgb(138, 144, 148, 0.3);
     width:20%;
     height:150px;
-min-width:180px;
+    min-width:180px;
     margin:20px;
     display: flex;
     align-items: center;
@@ -293,7 +292,7 @@ scale:1.05;
 border-color: rgb(32, 64, 227);
 cursor:pointer;
 border-style: solid;
-border-width: 2px;
+border-width: 1px;
 
 border-radius: 8px;
 
@@ -312,14 +311,159 @@ border-radius: 8px;
     background-color: rgb(232, 235, 252);
 }
 
+.fourthsection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 40px;
+    background-color: white;
+}
 
+.fourthsection img{
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+}
 
+.image-container{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
 
+.image-item1{
+    display: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
 
+.pic1, .pic3{
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
 
+.content-container{
+    width: 45%;
+    margin-left: 70px;
+}
 
+.content-title{
+    text-align: center;
+    font-family:  "Inter", sans-serif;
+    width: 400px;
+    margin-bottom: 20px;
+}
 
+.content-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
 
+.content-icon i{
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 5px;
+    color: rgb(32, 64, 227);
+    background-color: rgb(232, 235, 252);
+}
+
+.title{
+    text-align: start;
+    width: 390px;
+    font-size: 22px;
+    font-weight: bold;
+    font-family:  "Inter", sans-serif;
+    margin-bottom: 3px;
+}
+
+.description{
+    width: 400px;
+    font-size: 14px;
+    line-height: 20px;
+    font-family:  "Inter", sans-serif;
+    color:rgb(138, 144, 148);
+}
+
+.top-ojt, .search, .partnered{
+    margin-left: 20px;
+}
+
+.fifthsection {
+    position: relative;
+    background-image: url('images/pic5.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    overflow: hidden;
+}
+
+.fifthsection::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #2042e3;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.overlay-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    color: #2042e3;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.boost{
+    font-size: 15px;
+}
+
+.sign-btn {
+    width: 150px;
+    height: 50px;
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: #fff;
+    color: #2042e3;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.sign-btn:hover {
+    color: #fff;
+    background-color: #000000;
+}
 
 
 .footer{
@@ -333,6 +477,8 @@ border-radius: 8px;
 
 .footer1{
     width: 90%;
+    margin-top: 50px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -349,6 +495,8 @@ border-radius: 8px;
 .footer2{
     width: 90%;
     height: 250px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: row;
     font-size: 15px;
@@ -359,5 +507,16 @@ border-radius: 8px;
     margin-right: 100px;
 }
 
-
- 
+.footer3{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-top: solid;
+    border-color: rgb(100, 97, 97);
+    border-width: 1px;
+    background-color: rgb(31, 33, 38);
+    color: rgba(255, 255, 255, 0.356);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+}
