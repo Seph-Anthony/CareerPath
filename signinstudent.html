@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In: Career Path</title>
+ <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=GFS+Didot&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Unna:ital,wght@0,400;0,700;1,400;1,700&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="signinstudent.css">
+
+
+</head>
+<body>
+
+  <div class="signin-container">
+
+ 
+    <div class="left-panel">
+            <a href="index.html"><span class="backbtn">&times;</span></a>
+      <div class="brand-name"><i class="fa-solid fa-graduation-cap"></i>Career Path</div>
+      <div class="welcome-text">
+        <i class="fa-solid fa-user"></i>
+        <h1>Welcome Back!</h1>
+        <p>Sign in to continue your OJT journey and connect with amazing companies.</p>
+      </div>
+    </div>
+
+   
+    <div class="right-panel">
+      <form action="signin.php" method="POST" class="signin-form">
+        <h2>Sign In</h2>
+
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Sign In</button>
+
+        <p>Don’t have an account? <a href="signupstudent.html">Sign up here</a></p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
