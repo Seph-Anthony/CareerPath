@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In: Company | Career Path</title>
+  <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="signincompany.css">
+</head>
+<body>
+
+  <div class="signin-container">
+    <div class="left-panel">
+      <a href="index.html"><span class="backbtn">&times;</span></a>
+      <div class="brand-name"><i class="fa-solid fa-building"></i> Career Path</div>
+      <div class="welcome-text">
+        <i class="fa-solid fa-briefcase"></i>
+        <h1>Welcome Back, Company!</h1>
+        <p>Sign in to manage your OJT listings and connect with qualified interns from St. Cecilia’s College.</p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <form action="company_signin.php" method="POST" class="signin-form">
+        <h2>Sign In</h2>
+
+        <label>Email or Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Sign In</button>
+
+        <p>Don’t have an account? <a href="signupcompany.html">Sign up here</a></p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
