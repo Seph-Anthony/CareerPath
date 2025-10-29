@@ -3,35 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up: Student</title>
- <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=GFS+Didot&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Unna:ital,wght@0,400;0,700;1,400;1,700&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-
-
+  <title>Sign Up: Student | Career Path</title>
+  <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="signupstudent.css">
 </head>
 <body>
 
   <div class="signup-container">
-
-    <!-- Left Panel -->
+    <!-- LEFT PANEL -->
     <div class="left-panel">
-        <a href="index.html"><span class="backbtn">&times;</span></a>
-        <i class="fa-solid fa-graduation-cap"></i>
+      <a href="index.html"><span class="backbtn">&times;</span></a>
+      <i class="fa-solid fa-graduation-cap"></i>
       <div class="brand-name">Career Path</div>
       <div class="welcome-text">
-        
         <h1>Join Career Path Today!</h1>
         <p>Start your OJT journey with ease — explore opportunities, connect with companies, and take your first step toward your career goals.</p>
       </div>
     </div>
 
-    <!-- Right Panel (Form Section) -->
+    <!-- RIGHT PANEL -->
     <div class="right-panel">
       <form action="student_signup.php" method="POST" class="signup-form">
-
         <h2>Student Sign Up</h2>
 
         <div class="form-columns">
@@ -62,7 +57,7 @@
 
           <div style="grid-column: span 2;">
             <label>Short Description</label>
-            <textarea name="description" placeholder="Tell us a bit about yourself..."></textarea>
+            <textarea name="description" placeholder="Tell us a bit about yourself..." rows="3"></textarea>
           </div>
 
           <div>
@@ -81,11 +76,14 @@
           </div>
         </div>
 
+        <!-- Hidden fields (important for backend) -->
         <input type="hidden" name="role" value="student">
         <input type="hidden" name="status" value="Active">
 
         <button type="submit">Sign Up</button>
+
         <p>Already have an account? <a href="signinstudent.html">Sign in here</a></p>
+        <p>Are you a company planning to find OJT’s? <a href="signupcompany.html">Click here</a></p>
       </form>
     </div>
   </div>

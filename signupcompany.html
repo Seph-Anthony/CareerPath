@@ -13,6 +13,7 @@
 <body>
 
   <div class="signup-container">
+    <!-- LEFT PANEL -->
     <div class="left-panel">
       <a href="index.html"><span class="backbtn">&times;</span></a>
       <i class="fa-solid fa-building"></i>
@@ -23,6 +24,7 @@
       </div>
     </div>
 
+    <!-- RIGHT PANEL -->
     <div class="right-panel">
       <form action="company_signup.php" method="POST" class="signup-form">
         <h2>Company Sign Up</h2>
@@ -35,7 +37,7 @@
 
           <div>
             <label>Industry Type</label>
-            <input type="text" name="industry_type" placeholder="e.g., IT, Marketing" required>
+            <input type="text" name="industry" placeholder="e.g., IT, Marketing" required>
           </div>
 
           <div>
@@ -45,7 +47,7 @@
 
           <div>
             <label>Contact Number</label>
-            <input type="text" name="contact" required>
+            <input type="text" name="phone_number" required>
           </div>
 
           <div style="grid-column: span 2;">
@@ -55,7 +57,7 @@
 
           <div>
             <label>HR/Representative Name</label>
-            <input type="text" name="representative" required>
+            <input type="text" name="contact_person" required>
           </div>
 
           <div>
@@ -78,6 +80,10 @@
             <input type="password" name="confirm_password" required>
           </div>
         </div>
+
+        <!-- Hidden inputs for backend logic -->
+        <input type="hidden" name="role" value="company">
+        <input type="hidden" name="status" value="Active">
 
         <button type="submit">Sign Up</button>
         <p>Already have an account? <a href="signincompany.html">Sign in here</a></p>
