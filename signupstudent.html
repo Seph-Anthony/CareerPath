@@ -26,7 +26,7 @@
 
     <!-- RIGHT PANEL -->
     <div class="right-panel">
-      <form action="student_signup.php" method="POST" class="signup-form">
+      <form id="signup-form" action="student_signup.php" method="POST" class="signup-form">
         <h2>Student Sign Up</h2>
 
         <div class="form-columns">
@@ -84,9 +84,13 @@
 
         <p>Already have an account? <a href="signinstudent.html">Sign in here</a></p>
         <p>Are you a company planning to find OJT’s? <a href="signupcompany.html">Click here</a></p>
+         <p>Planning to be a coordinator? <a href="signupcoordinator.html">Click here</a></p>
       </form>
     </div>
   </div>
+<div id="form-alert" class="alert" style="display: none;"></div>
+
+<script src="signupstudent.js"></script>
 
 </body>
 </html>

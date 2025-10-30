@@ -1,0 +1,170 @@
+/* ===== General Page Setup ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: rgb(247, 250, 252);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== Container Layout ===== */
+.signin-container {
+  width: 900px;
+  height: 520px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===== Left Panel (Blue Section) ===== */
+.left-panel {
+  background-color: rgb(32, 64, 227);
+  color: #ffffff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 40px;
+  text-align: center;
+}
+
+.left-panel a {
+  color: white;
+  text-decoration: none;
+}
+
+.backbtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.backbtn:hover {
+  transform: translateY(-3px);
+  scale: 1.25;
+}
+
+/* ===== Branding ===== */
+.brand-name {
+  position: absolute;
+  top: 25px;
+  left: 35px;
+  font-weight: 700;
+  font-size: 22px;
+  font-family: "Oswald", sans-serif;
+  color: #fff;
+}
+
+.fa-user-tie {
+  font-size: 90px;
+  margin-bottom: 10px;
+}
+
+.welcome-text h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.welcome-text p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e2e6ff;
+  width: 100%;
+}
+
+/* ===== Right Panel (Form Section) ===== */
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.signin-form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+/* ===== Form Header ===== */
+.signin-form h2 {
+  text-align: center;
+  color: rgb(32, 64, 227);
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+/* ===== Input Fields ===== */
+.signin-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(83, 84, 84);
+  margin-bottom: 5px;
+}
+
+.signin-form input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(138, 144, 148, 0.4);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.signin-form input:focus {
+  border-color: rgb(32, 64, 227);
+  box-shadow: 0 0 5px rgba(32, 64, 227, 0.3);
+}
+
+/* ===== Button Style ===== */
+.signin-form button {
+  background-color: rgb(32, 64, 227);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signin-form button:hover {
+  transform: translateY(-3px);
+  background-color: rgb(25, 50, 190);
+}
+
+/* ===== Footer Links ===== */
+.signin-form p {
+  text-align: center;
+  font-size: 14px;
+  color: rgb(83, 84, 84);
+  margin-top: 20px;
+}
+
+.signin-form p a {
+  color: rgb(32, 64, 227);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.signin-form p a:hover {
+  color: rgb(25, 50, 190);
+  text-decoration: underline;
+}

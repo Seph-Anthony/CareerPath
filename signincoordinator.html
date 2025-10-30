@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In: Coordinator | Career Path</title>
+  <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="signincoordinator.css">
+</head>
+<body>
+
+  <div class="signin-container">
+    <div class="left-panel">
+      <a href="index.html"><span class="backbtn">&times;</span></a>
+      <div class="brand-name"><i class="fa-solid fa-user-tie"></i> Career Path</div>
+      <div class="welcome-text">
+        <h1>Welcome Back, Coordinator!</h1>
+        <p>Access your dashboard to manage students, monitor OJT performance, and review company postings.</p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <form action="coordinator_signin.php" method="POST" class="signin-form">
+        <h2>Coordinator Sign In</h2>
+
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Sign In</button>
+
+        <p>Don’t have an account? <a href="signupcoordinator.html">Sign up here</a></p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

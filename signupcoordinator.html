@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up: Coordinator | Career Path</title>
+  <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="signupcoordinator.css">
+</head>
+<body>
+
+  <div class="signup-container">
+    <div class="left-panel">
+      <a href="index.html"><span class="backbtn">&times;</span></a>
+      <i class="fa-solid fa-user-tie"></i>
+      <div class="brand-name">Career Path</div>
+      <div class="welcome-text">
+        <h1>Join as a Coordinator</h1>
+        <p>Help manage student OJT placements, oversee company partnerships, and streamline internship monitoring.</p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <form action="coordinator_signup.php" method="POST" class="signup-form">
+        <h2>Coordinator Sign Up</h2>
+
+        <div class="form-columns">
+          <div style="grid-column: span 2;">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="e.g., Maria Dela Cruz" required>
+          </div>
+
+          <div style="grid-column: span 2;">
+            <label>Position</label>
+            <input type="text" name="position" placeholder="e.g., OJT Coordinator" required>
+          </div>
+
+          <div>
+            <label>Email</label>
+            <input type="email" name="email" required>
+          </div>
+
+          <div>
+            <label>Contact Number</label>
+            <input type="text" name="contact" required>
+          </div>
+
+          <div>
+            <label>Username</label>
+            <input type="text" name="username" required>
+          </div>
+
+          <div>
+            <label>Password</label>
+            <input type="password" name="password" required>
+          </div>
+
+          <div>
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" required>
+          </div>
+        </div>
+
+        <input type="hidden" name="role" value="coordinator">
+        <input type="hidden" name="status" value="Active">
+
+        <button type="submit">Sign Up</button>
+        <p>Already have an account? <a href="signincoordinator.html">Sign in here</a></p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-/* ===== General Page Style ===== */
+/* ===== General Page Setup ===== */
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +10,7 @@ body {
   align-items: center;
 }
 
-/* ===== Main Container ===== */
+/* ===== Container Layout ===== */
 .signup-container {
   width: 1000px;
   height: auto;
@@ -21,7 +21,7 @@ body {
   overflow: hidden;
 }
 
-/* ===== Left Panel ===== */
+/* ===== Left Panel (Blue Section) ===== */
 .left-panel {
   background-color: rgb(32, 64, 227);
   color: #ffffff;
@@ -33,59 +33,49 @@ body {
   position: relative;
   padding: 40px;
   text-align: center;
-  position: relative;
-
 }
-
 
 .left-panel a {
-  
-color:white;
-text-decoration: none;
-
+  color: white;
+  text-decoration: none;
 }
 
-
-.backbtn{
-position:absolute;
-
-top:40px;
-left:20px;
-font-size: 30px;
-cursor: pointer;
-
-transition: all 0.3s ease-in-out;
-}
-.backbtn:hover{
-transform:translateY(-3px);
-scale:1.05;
-
+.backbtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-.fa-graduation-cap{
-top:50px;
-  font-size: 100px;
+.backbtn:hover {
+  transform: translateY(-3px);
+  scale: 1.05;
+}
 
+.fa-user-tie {
+  font-size: 90px;
+  margin-bottom: 10px;
 }
 
 .brand-name {
-margin-bottom:10px;
+  margin-bottom: 10px;
   font-weight: 700;
   font-size: 22px;
   font-family: "Oswald", sans-serif;
   color: #fff;
 }
-.welcome-text{
 
+.welcome-text {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .welcome-text h1 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-bottom: 10px;
 }
 
@@ -93,12 +83,10 @@ margin-bottom:10px;
   font-size: 15px;
   line-height: 1.6;
   color: #e2e6ff;
-  width: 80%;
-
-
+  width: 100%;
 }
 
-/* ===== Right Panel ===== */
+/* ===== Right Panel (Form Section) ===== */
 .right-panel {
   flex: 1.2;
   display: flex;
@@ -108,7 +96,6 @@ margin-bottom:10px;
   background-color: #ffffff;
 }
 
-/* ===== Sign Up Form ===== */
 .signup-form {
   width: 90%;
   display: flex;
@@ -122,6 +109,7 @@ margin-bottom:10px;
   margin-bottom: 25px;
 }
 
+/* ===== Form Layout ===== */
 .form-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -136,9 +124,8 @@ margin-bottom:10px;
 }
 
 .signup-form input[type="text"],
-.signup-form input[type="password"],
-.signup-form select,
-.signup-form textarea {
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
   width: 100%;
   padding: 12px;
   border: 1px solid rgba(138, 144, 148, 0.4);
@@ -146,23 +133,14 @@ margin-bottom:10px;
   font-size: 14px;
   transition: all 0.2s ease;
   outline: none;
-  font-family: "Inter", sans-serif;
 }
 
-.signup-form input:focus,
-.signup-form select:focus,
-.signup-form textarea:focus {
+.signup-form input:focus {
   border-color: rgb(32, 64, 227);
   box-shadow: 0 0 5px rgba(32, 64, 227, 0.3);
 }
 
-.signup-form textarea {
-  resize: none;
-  height: 80px;
-  grid-column: span 2;
-}
-
-/* ===== Button ===== */
+/* ===== Button Style ===== */
 .signup-form button {
   background-color: rgb(32, 64, 227);
   color: white;
@@ -182,7 +160,7 @@ margin-bottom:10px;
   background-color: rgb(25, 50, 190);
 }
 
-/* ===== Already Have an Account ===== */
+/* ===== Footer Text ===== */
 .signup-form p {
   text-align: center;
   font-size: 14px;
@@ -201,29 +179,3 @@ margin-bottom:10px;
   color: rgb(25, 50, 190);
   text-decoration: underline;
 }
-
-.alert {
-  width: 90%;
-  margin: 15px auto;
-  padding: 12px;
-  border-radius: 8px;
-  font-family: "Inter", sans-serif;
-  text-align: center;
-  font-size: 15px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.5s ease;
-}
-
-.alert.error {
-  background-color: #ffe3e3;
-  color: #d93025;
-  border: 1px solid #d93025;
-}
-
-.alert.success {
-  background-color: #e3ffe9;
-  color: #137333;
-  border: 1px solid #137333;
-}
-
-
