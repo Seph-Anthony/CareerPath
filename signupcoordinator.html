@@ -27,42 +27,60 @@
       <form action="coordinator_signup.php" method="POST" class="signup-form">
         <h2>Coordinator Sign Up</h2>
 
-        <div class="form-columns">
-          <div style="grid-column: span 2;">
-            <label>Full Name</label>
-            <input type="text" name="name" placeholder="e.g., Maria Dela Cruz" required>
-          </div>
+       <div class="form-columns">
+  <div style="grid-column: span 2;">
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="e.g., Maria Dela Cruz" required>
+  </div>
 
-          <div style="grid-column: span 2;">
-            <label>Position</label>
-            <input type="text" name="position" placeholder="e.g., OJT Coordinator" required>
-          </div>
+  <div style="grid-column: span 2;">
+    <label>Position</label>
+    <input type="text" name="position" placeholder="e.g., OJT Coordinator" required>
+  </div>
 
-          <div>
-            <label>Email</label>
-            <input type="email" name="email" required>
-          </div>
+  <div style="grid-column: span 2;">
+    <label>Employee ID / Faculty ID</label>
+    <input type="text" name="employee_id" placeholder="e.g., 12345 (Required for Verification)" required>
+  </div>
 
-          <div>
-            <label>Contact Number</label>
-            <input type="text" name="contact" required>
-          </div>
+  <div style="grid-column: span 2;">
+    <label>Department</label>
+<select name="department" required>
+              <option value="" disabled selected>Select Your Department</option>
+              <option value="BS in Information Technology">BS in Information Technology (BSIT)</option>
+              <option value="BS in Criminology">BS in Criminology (BSCRIM)</option>
+              <option value="BS in Business Administration">BS in Business Administration (BSBA)</option>
+              <option value="BS in Nursing">BS in Nursing (BSNURSING)</option>
+              <option value="Bachelor of Elementary Education">Bachelor of Elementary Education (BEED)</option>
+              <option value="BS in Hospitality Management">BS in Hospitality Management (BSHM)</option>
+              <option value="BS in Secondary Education">BS in Secondary Education (BSED)</option>
+            </select>
+  </div>
+  <div>
+    <label>Email</label>
+    <input type="email" name="email" required>
+  </div>
 
-          <div>
-            <label>Username</label>
-            <input type="text" name="username" required>
-          </div>
+  <div>
+    <label>Contact Number</label>
+    <input type="text" name="contact" required>
+  </div>
 
-          <div>
-            <label>Password</label>
-            <input type="password" name="password" required>
-          </div>
+  <div>
+    <label>Username</label>
+    <input type="text" name="username" required>
+  </div>
 
-          <div>
-            <label>Confirm Password</label>
-            <input type="password" name="confirm_password" required>
-          </div>
-        </div>
+  <div>
+    <label>Password</label>
+    <input type="password" name="password" required>
+  </div>
+
+  <div>
+    <label>Confirm Password</label>
+    <input type="password" name="confirm_password" required>
+  </div>
+</div>
 
         <input type="hidden" name="role" value="coordinator">
         <input type="hidden" name="status" value="Active">
@@ -72,6 +90,8 @@
       </form>
     </div>
   </div>
+
+<script src="signupcoordinator.js"></script>
 
 </body>
 </html>

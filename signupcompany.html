@@ -10,10 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="signupcompany.css">
 </head>
-<body>
 
+<body>
   <div class="signup-container">
-    <!-- LEFT PANEL -->
+
+    <!-- Left Panel -->
     <div class="left-panel">
       <a href="index.html"><span class="backbtn">&times;</span></a>
       <i class="fa-solid fa-building"></i>
@@ -24,9 +25,11 @@
       </div>
     </div>
 
-    <!-- RIGHT PANEL -->
+    <!-- Right Panel -->
     <div class="right-panel">
-      <form action="company_signup.php" method="POST" class="signup-form">
+      <!-- 🧩 FORM STARTS HERE -->
+      <form action="signupcompany.php" method="POST" class="signup-form">
+
         <h2>Company Sign Up</h2>
 
         <div class="form-columns">
@@ -37,7 +40,7 @@
 
           <div>
             <label>Industry Type</label>
-            <input type="text" name="industry" placeholder="e.g., IT, Marketing" required>
+            <input type="text" name="industry_type" placeholder="e.g., IT, Marketing" required>
           </div>
 
           <div>
@@ -47,7 +50,7 @@
 
           <div>
             <label>Contact Number</label>
-            <input type="text" name="phone_number" required>
+            <input type="text" name="contact" required>
           </div>
 
           <div style="grid-column: span 2;">
@@ -57,12 +60,12 @@
 
           <div>
             <label>HR/Representative Name</label>
-            <input type="text" name="contact_person" required>
+            <input type="text" name="representative" required>
           </div>
 
           <div>
             <label>Position/Designation</label>
-            <input type="text" name="designation" required>
+            <input type="text" name="designation" placeholder="e.g., HR Officer" required>
           </div>
 
           <div>
@@ -81,15 +84,18 @@
           </div>
         </div>
 
-        <!-- Hidden inputs for backend logic -->
         <input type="hidden" name="role" value="company">
         <input type="hidden" name="status" value="Active">
 
         <button type="submit">Sign Up</button>
+
         <p>Already have an account? <a href="signincompany.html">Sign in here</a></p>
+
       </form>
+      <!-- 🧩 FORM ENDS HERE -->
     </div>
   </div>
 
+  <script src="signupcompany.js"></script>
 </body>
 </html>

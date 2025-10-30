@@ -13,7 +13,6 @@
 <body>
 
   <div class="signup-container">
-    <!-- LEFT PANEL -->
     <div class="left-panel">
       <a href="index.html"><span class="backbtn">&times;</span></a>
       <i class="fa-solid fa-graduation-cap"></i>
@@ -24,7 +23,6 @@
       </div>
     </div>
 
-    <!-- RIGHT PANEL -->
     <div class="right-panel">
       <form id="signup-form" action="student_signup.php" method="POST" class="signup-form">
         <h2>Student Sign Up</h2>
@@ -42,9 +40,17 @@
 
           <div>
             <label>Course</label>
-            <input type="text" name="course" placeholder="e.g., BSIT" required>
+            <select name="course" required>
+              <option value="" disabled selected>Select Your Course</option>
+              <option value="BS in Information Technology">BS in Information Technology (BSIT)</option>
+              <option value="BS in Criminology">BS in Criminology (BSCRIM)</option>
+              <option value="BS in Business Administration">BS in Business Administration (BSBA)</option>
+              <option value="BS in Nursing">BS in Nursing (BSNURSING)</option>
+              <option value="Bachelor of Elementary Education">Bachelor of Elementary Education (BEED)</option>
+              <option value="BS in Hospitality Management">BS in Hospitality Management (BSHM)</option>
+              <option value="BS in Secondary Education">BS in Secondary Education (BSED)</option>
+            </select>
           </div>
-
           <div>
             <label>Year Level</label>
             <select name="year_level" required>
@@ -76,7 +82,6 @@
           </div>
         </div>
 
-        <!-- Hidden fields (important for backend) -->
         <input type="hidden" name="role" value="student">
         <input type="hidden" name="status" value="Active">
 

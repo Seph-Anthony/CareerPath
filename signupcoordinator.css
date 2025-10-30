@@ -116,6 +116,55 @@ body {
   gap: 20px 30px;
 }
 
+.right-panel select{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(138, 144, 148, 0.4);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: "Inter", sans-serif;
+
+}
+
+
+.signup-form select {
+  width: 100%;
+  padding: 12px;
+  /* Appearance reset for cross-browser consistency on select dropdowns */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; 
+  background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="rgb(83, 84, 84)" d="M0,0 L5,5 L10,0 Z"/></svg>') no-repeat right 12px center;
+  background-size: 10px 5px;
+  
+  /* Styling properties matched to your inputs: */
+  border: 1px solid rgba(138, 144, 148, 0.4);
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333; /* Ensure text is readable */
+  transition: all 0.2s ease;
+  outline: none;
+  margin-bottom: 20px; /* To match spacing of inputs */
+}
+
+/* Add focus style for visual feedback */
+.signup-form select:focus {
+  border-color: rgb(32, 64, 227);
+  box-shadow: 0 0 5px rgba(32, 64, 227, 0.3);
+}
+
+/* Ensure the label is correctly styled (if not already done for inputs) */
+.signup-form label {
+  display: block; /* Make label occupy its own line */
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(83, 84, 84);
+  margin-bottom: 5px;
+}
+
+
 .signup-form label {
   font-size: 14px;
   font-weight: 600;
