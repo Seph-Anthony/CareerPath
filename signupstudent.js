@@ -3,13 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const firstName = document.querySelector('input[name="first_name"]');
   const lastName = document.querySelector('input[name="last_name"]');
-  const course = document.querySelector('input[name="course"]');
+  // 🐛 FIX THIS LINE: Change 'input' to 'select'
+  const course = document.querySelector('select[name="course"]'); 
   const yearLevel = document.querySelector('select[name="year_level"]');
   const description = document.querySelector('textarea[name="description"]');
   const username = document.querySelector('input[name="username"]');
   const password = document.querySelector('input[name="password"]');
   const confirmPassword = document.querySelector('input[name="confirm_password"]');
 
+// ... rest of the file
   let usernameAvailable = false;
 
   // === Check Username Availability (AJAX) ===
