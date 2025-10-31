@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 30, 2025 at 07:07 PM
+-- Generation Time: Oct 31, 2025 at 05:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -73,7 +73,9 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`company_id`, `user_id`, `company_name`, `industry`, `address`, `contact_person`, `email`, `phone_number`, `description`, `image_des`) VALUES
-(1, 2, 'PNP', 'Marketing', 'Ward 2 Minglanilla Cebu', 'Mike Bustamante', 'generalgenx60@gmail.com', '12345678911', '', '');
+(1, 2, 'PNP', 'Marketing', 'Ward 2 Minglanilla Cebu', 'Mike Bustamante', 'generalgenx60@gmail.com', '12345678911', '', ''),
+(2, 5, 'BDO', 'Marketing', 'Ward 3 Minglanilla Cebu', 'Larry Boss', 'zennia@gmail.com', '12345678911', '', ''),
+(3, 9, 'Azzella Properties', 'Real Estate', 'Lipata Minglanilla Cebu', 'Dave Joseph Cruz', 'azzella@gmail.com', '09345674532', '', '');
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,8 @@ CREATE TABLE `coordinator` (
 --
 
 INSERT INTO `coordinator` (`coordinator_id`, `user_id`, `full_name`, `employee_id`, `position`, `department`, `email`, `contact_number`) VALUES
-(1, 4, 'Maria Dela Cruz', '12345', 'Coordinator', 'BS in Information Technology', 'lloyd@gmail.com', '12345678911');
+(1, 4, 'Maria Dela Cruz', '12345', 'Coordinator', 'BS in Information Technology', 'lloyd@gmail.com', '12345678911'),
+(2, 10, 'Andry Gemao Cruz', '678910', 'OJT Coordinator', 'BS in Information Technology', 'andry@gmail.com', '09123456781');
 
 -- --------------------------------------------------------
 
@@ -188,7 +191,10 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `last_name`, `course`, `year_level`, `description`, `status`) VALUES
 (1, 1, 'Joseph', 'Christian', 'BSIT', '2nd Year', 'I love to cheer myself by telling how bad I am', 'Active'),
-(2, 3, 'Larry', 'Bustamante', 'BSIT', '1st Year', 'I love food', 'Active');
+(2, 3, 'Larry', 'Bustamante', 'BSIT', '1st Year', 'I love food', 'Active'),
+(3, 6, 'Joseph', 'Arambala', 'BS in Information Technology', '3rd Year', 'I love to code a lot', 'Active'),
+(4, 7, 'Larry', 'Mike', 'BS in Criminology', '3rd Year', 'I love to shoot guns', 'Active'),
+(5, 8, 'Joseph', 'Anthony', 'BS in Information Technology', '3rd Year', 'I love to code a lot', 'Active');
 
 -- --------------------------------------------------------
 
@@ -199,7 +205,7 @@ INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `last_name`, `cour
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `role` varchar(50) NOT NULL,
   `status` varchar(20) DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -212,7 +218,13 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `status`) VALUES
 (1, 'joseph', '$2y$10$4Mz0eZd7FlU.75fx/jDdBuYrzHyb76LIyEIv8MQCPAJ', 'student', 'Active'),
 (2, 'mike', '$2y$10$GMBBYfftm9VWdIsvq8z.9u6d8hNaEls6qGJzO8J5TYL', 'company', 'Active'),
 (3, 'loyd', '$2y$10$fLXM2B.0cEc.d1WrxXYSKeCmAmxP0hQuQoebHkP3po4', 'student', 'Active'),
-(4, 'mikeeyy', '$2y$10$t5GfKvgM52BtZjNpjqfra.o.I0xyiaKM6J5ymvbW2aG', 'coordinator', 'Active');
+(4, 'mikeeyy', '$2y$10$t5GfKvgM52BtZjNpjqfra.o.I0xyiaKM6J5ymvbW2aG', 'coordinator', 'Active'),
+(5, 'larry', '$2y$10$zu2K7N2LUXE0LMEClxYcjelyp1d4Mc5D0WGBQ8iolH6', 'company', 'Active'),
+(6, 'sepsep', '$2y$10$Mvrhy4BlrZ4Fm8aGoqjIsOTTuoY8nu0UgNxNAVxolRV', 'student', 'Active'),
+(7, 'larlarlar', '$2y$10$n.CPNM7kA.OpT5jeEb3Nw.QGmYzP6d6HznkbKhM3KXu', 'student', 'Active'),
+(8, 'testsubject', '$2y$10$cZjcRiy8nTUorNV538OFhOTFSqiEN9sQ1Ebrwa1yT0rE/Szk5fe4a', 'student', 'Active'),
+(9, 'azzella', '$2y$10$nNR1MhJkEld7ONwXggwzR.d.ShtoHgUJUR1ic1YcJ4ePcjHaOhRuy', 'company', 'Active'),
+(10, 'andry123456', '$2y$10$LiyVug7Tv9WQmESEw6ZbauhoGeof/AJqM22scA9Zn040IrNo0T0Fe', 'coordinator', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -314,13 +326,13 @@ ALTER TABLE `application`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `coordinator`
 --
 ALTER TABLE `coordinator`
-  MODIFY `coordinator_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `coordinator_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `evaluation`
@@ -350,13 +362,13 @@ ALTER TABLE `requirement`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
