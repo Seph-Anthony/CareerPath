@@ -70,7 +70,7 @@ if (password_verify($password, $hashed_password)) {
 
     // 5. Redirect to Student Dashboard
     // Use header() redirect for cleaner navigation
-    header("Location: studentdashboard.html");
+    header("Location: studentdashboard.php");
     exit;
 
 } else {

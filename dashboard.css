@@ -1,0 +1,193 @@
+/* ================================================= */
+/* 1. BASE & UTILITIES                   */
+/* ================================================= */
+:root {
+    --primary-blue: rgb(32, 64, 227);
+    --primary-dark: rgb(25, 50, 190);
+    --secondary-gray: rgb(83, 84, 84);
+    --light-bg: rgb(247, 250, 252);
+    --white: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: var(--light-bg);
+    display: flex; /* Enables main layout */
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    color: var(--secondary-gray);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    transition: color 0.3s;
+}
+
+/* ================================================= */
+/* 2. DASHBOARD LAYOUT                   */
+/* ================================================= */
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 250px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 20px 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.logo {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: var(--white);
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    transition: background-color 0.3s, padding-left 0.3s;
+}
+
+.nav-link i {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    background-color: var(--primary-dark);
+    padding-left: 25px;
+}
+
+/* --- Main Content Area --- */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header Bar --- */
+.header {
+    background-color: var(--white);
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #333;
+}
+
+.user-info a {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* --- Dashboard Body --- */
+.dashboard-body {
+    padding: 40px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for status cards */
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.section-container {
+    margin-bottom: 40px;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section-container h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: var(--primary-blue);
+    border-bottom: 2px solid var(--light-bg);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+/* ================================================= */
+/* 3. CARD COMPONENTS (Visual Features)  */
+/* ================================================= */
+
+.status-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border-top: 5px solid var(--primary-blue);
+}
+
+.status-card p {
+    margin: 5px 0;
+    color: var(--secondary-gray);
+    font-size: 14px;
+}
+
+.status-card strong {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+/* Specific styling for the main status */
+.main-status-card {
+    grid-column: span 2; /* Make this card take up 2 columns */
+    border-top-color: var(--primary-dark);
+}
+
+.main-status-card strong {
+    color: var(--primary-dark);
+    font-size: 2.5em;
+}
+
+.job-listing-card {
+    border: 1px solid var(--light-bg);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+    background-color: #f9f9f9;
+}
+
+.job-listing-card:hover {
+    box-shadow: 0 2px 10px rgba(32, 64, 227, 0.1);
+}
+
+.job-listing-card h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 1.2em;
+}

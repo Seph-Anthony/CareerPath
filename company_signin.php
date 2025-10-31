@@ -63,7 +63,7 @@ if (password_verify($password, $hashed_password)) {
     $_SESSION['logged_in'] = true;
 
     // 5. Redirect to Company Dashboard
-    header("Location: companydashboard.html");
+    header("Location: companydashboard.php");
     exit;
 
 } else {

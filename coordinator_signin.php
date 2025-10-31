@@ -63,7 +63,7 @@ if (password_verify($password, $hashed_password)) {
     $_SESSION['logged_in'] = true;
 
     // 5. Redirect to Coordinator Dashboard
-    header("Location: coordinatordashboard.html");
+    header("Location: coordinatordashboard.php");
     exit;
 
 } else {
