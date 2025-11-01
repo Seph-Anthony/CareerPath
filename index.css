@@ -49,15 +49,22 @@ cursor: pointer;
 
 
 .firstnav{
-
-border-bottom: 1px solid rgb(32, 64, 227);
+    border-bottom: 1px solid rgb(32, 64, 227);
     width:95%;
     display: flex;
     align-items: center;
     justify-content:space-between;
     flex-wrap: wrap;
-padding:0;
-    
+    padding:0;
+}
+
+.firstnav select{
+    background-color: transparent;
+    color:rgb(83, 84, 84);
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    border: none;
 }
 
 .title{
@@ -77,24 +84,19 @@ color:rgb(32, 64, 227);
 }
 
 .firstnav li{
-
-
-
     color:rgb(83, 84, 84);
     font-size: 15px;
     font-weight: 500;
-  font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
     text-align: center;
     display: inline-block;
     margin-right:20px;
-
     transition: transform 0.3s, color 0.3s;
-cursor: pointer;
+    cursor: pointer;
 }
 
 .firstnav li:hover{
-
-    transform:translateY(-5px);
+    transform:translateY(-2px);
     color:rgb(32, 64, 227);
     scale:1.05;
 }

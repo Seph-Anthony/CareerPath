@@ -20,6 +20,7 @@ $applications_submitted = 5;
 $interviews_scheduled = 2;
 // ----------------------------------------
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,11 +35,11 @@ $interviews_scheduled = 2;
     <div class="sidebar">
         <div class="logo">Career Path</div>
         <nav>
-            <a href="studentdashboard.php" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="studentdashboard.php" class="nav-link active"><i class="fa-solid fa-house"></i> Dashboard</a>
             <a href="#" class="nav-link"><i class="fas fa-search"></i> Job Listings</a>
             <a href="#" class="nav-link"><i class="fas fa-tasks"></i> My Applications</a>
-            <a href="#" class="nav-link"><i class="fas fa-user-circle"></i> Profile & Resume</a>
-            <a href="logout.php" class="nav-link" style="margin-top: auto; color: #ffdddd;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="#"class="nav-link"><i class="fa-solid fa-user"></i> Profile & Resume</a>
+            <a href="logout.php" class="nav-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </nav>
     </div>
 
