@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 31, 2025 at 05:08 PM
+-- Generation Time: Nov 01, 2025 at 07:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -75,7 +75,9 @@ CREATE TABLE `company` (
 INSERT INTO `company` (`company_id`, `user_id`, `company_name`, `industry`, `address`, `contact_person`, `email`, `phone_number`, `description`, `image_des`) VALUES
 (1, 2, 'PNP', 'Marketing', 'Ward 2 Minglanilla Cebu', 'Mike Bustamante', 'generalgenx60@gmail.com', '12345678911', '', ''),
 (2, 5, 'BDO', 'Marketing', 'Ward 3 Minglanilla Cebu', 'Larry Boss', 'zennia@gmail.com', '12345678911', '', ''),
-(3, 9, 'Azzella Properties', 'Real Estate', 'Lipata Minglanilla Cebu', 'Dave Joseph Cruz', 'azzella@gmail.com', '09345674532', '', '');
+(3, 9, 'Azzella Properties', 'Real Estate', 'Lipata Minglanilla Cebu', 'Dave Joseph Cruz', 'azzella@gmail.com', '09345674532', '', ''),
+(4, 12, 'Julies BakeShop', 'Bakery', 'Ward 2 Minglanilla Cebu', 'Dina Ko De la Cruz', 'julies@gmail.com', '09123456789', '', ''),
+(5, 13, 'Julies BakeShop', 'Bakery', 'Ward 2 Minglanilla Cebu', 'Dina Ko De la Cruz', 'julies@gmail.com', '09123456789', '', '');
 
 -- --------------------------------------------------------
 
@@ -122,6 +124,20 @@ CREATE TABLE `evaluation` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `intern_application`
+--
+
+CREATE TABLE `intern_application` (
+  `application_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `posting_id` int(11) NOT NULL,
+  `application_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` enum('Pending','Reviewed','Interview Scheduled','Hired','Rejected') NOT NULL DEFAULT 'Pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `intern_posting`
 --
 
@@ -136,6 +152,14 @@ CREATE TABLE `intern_posting` (
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `intern_posting`
+--
+
+INSERT INTO `intern_posting` (`posting_id`, `company_id`, `title`, `description`, `requirements`, `slot_available`, `create_at`, `status`) VALUES
+(1, 5, 'Julies Bakery Worker Employee', 'This is just a test to prove if it will work or not', 'Good Attitude, Good Communicating skills, and Good math skills', 2, '2025-11-01 17:42:19.934600', 'Active'),
+(2, 3, 'OJT Employees to Handle the computer processing of the document', 'This is just a test again to see if it will work', 'Computer literate and good in communicating skills', 3, '2025-11-01 17:53:39.317653', 'Active');
+
 -- --------------------------------------------------------
 
 --
@@ -148,7 +172,7 @@ CREATE TABLE `invites` (
   `student_id` int(11) NOT NULL,
   `message` text NOT NULL,
   `status` varchar(100) NOT NULL,
-  `setnt_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `sent_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -194,7 +218,8 @@ INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `last_name`, `cour
 (2, 3, 'Larry', 'Bustamante', 'BSIT', '1st Year', 'I love food', 'Active'),
 (3, 6, 'Joseph', 'Arambala', 'BS in Information Technology', '3rd Year', 'I love to code a lot', 'Active'),
 (4, 7, 'Larry', 'Mike', 'BS in Criminology', '3rd Year', 'I love to shoot guns', 'Active'),
-(5, 8, 'Joseph', 'Anthony', 'BS in Information Technology', '3rd Year', 'I love to code a lot', 'Active');
+(5, 8, 'Joseph', 'Anthony', 'BS in Information Technology', '3rd Year', 'I love to code a lot', 'Active'),
+(6, 11, 'Lance', 'Mayormita', 'BS in Information Technology', '2nd Year', 'I love to play games and have some fun with the co', 'Active');
 
 -- --------------------------------------------------------
 
@@ -224,7 +249,10 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `status`) VALUES
 (7, 'larlarlar', '$2y$10$n.CPNM7kA.OpT5jeEb3Nw.QGmYzP6d6HznkbKhM3KXu', 'student', 'Active'),
 (8, 'testsubject', '$2y$10$cZjcRiy8nTUorNV538OFhOTFSqiEN9sQ1Ebrwa1yT0rE/Szk5fe4a', 'student', 'Active'),
 (9, 'azzella', '$2y$10$nNR1MhJkEld7ONwXggwzR.d.ShtoHgUJUR1ic1YcJ4ePcjHaOhRuy', 'company', 'Active'),
-(10, 'andry123456', '$2y$10$LiyVug7Tv9WQmESEw6ZbauhoGeof/AJqM22scA9Zn040IrNo0T0Fe', 'coordinator', 'Active');
+(10, 'andry123456', '$2y$10$LiyVug7Tv9WQmESEw6ZbauhoGeof/AJqM22scA9Zn040IrNo0T0Fe', 'coordinator', 'Active'),
+(11, 'lancelance', '$2y$10$34uKePT68M1/t5nMibM7ROFuH5r88kPi.z0raeIFYj/7k/9ZG7cEG', 'student', 'Active'),
+(12, 'juliesbake', '$2y$10$WuwRyxu/9auxFEdUJnVqEOVnn2f.7FvdLsgcegnBDRDNT1pMYAySq', 'company', 'Active'),
+(13, 'juliesss', '$2y$10$JmT.nSdYPcgA6hjR8fPuW.j6epiVEaMRuis4FkHpdyczDJRyiEEmy', 'company', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -269,6 +297,14 @@ ALTER TABLE `evaluation`
   ADD KEY `st_id` (`student_id`),
   ADD KEY `c_id` (`company_id`),
   ADD KEY `coor_id` (`coordinator_id`);
+
+--
+-- Indexes for table `intern_application`
+--
+ALTER TABLE `intern_application`
+  ADD PRIMARY KEY (`application_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `posting_id` (`posting_id`);
 
 --
 -- Indexes for table `intern_posting`
@@ -326,7 +362,7 @@ ALTER TABLE `application`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `coordinator`
@@ -341,10 +377,16 @@ ALTER TABLE `evaluation`
   MODIFY `evaluation_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `intern_application`
+--
+ALTER TABLE `intern_application`
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `intern_posting`
 --
 ALTER TABLE `intern_posting`
-  MODIFY `posting_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `posting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `invites`
@@ -362,13 +404,13 @@ ALTER TABLE `requirement`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -408,6 +450,13 @@ ALTER TABLE `evaluation`
   ADD CONSTRAINT `c_id` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`),
   ADD CONSTRAINT `coor_id` FOREIGN KEY (`coordinator_id`) REFERENCES `coordinator` (`coordinator_id`),
   ADD CONSTRAINT `st_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`);
+
+--
+-- Constraints for table `intern_application`
+--
+ALTER TABLE `intern_application`
+  ADD CONSTRAINT `intern_application_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `intern_application_ibfk_2` FOREIGN KEY (`posting_id`) REFERENCES `intern_posting` (`posting_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `intern_posting`

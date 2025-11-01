@@ -1,24 +1,67 @@
 <?php
-// studentdashboard.php
-require_once 'auth_check.php'; 
+// studentdashboard.php - Displays Active Internship Posts
+session_start();
+require_once 'db_connect.php'; 
 
-// 2. Check if the logged-in user has the correct role ('student')
-if ($_SESSION['role'] !== 'student') {
-    // If they logged in as a Coordinator/Company but ended up here, deny access.
-    header("Location: index.html"); 
+// 1. Authentication and Authorization Check
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
+    // If not logged in or not a student, redirect to the login page
+    header("Location: signinstudent.html"); 
     exit;
 }
 
-// --- Placeholder Data for Presentation ---
-$username = htmlspecialchars($_SESSION['username']);
-$fullname = "Juan Dela Cruz"; // Placeholder: In a real app, fetch from `student` table
-$course = "BS Information Technology";
+// --- 2. Fetch Student Personal Data ---
+$user_id = $_SESSION['user_id'];
+$fullname = "Student Name";
+$course = "N/A";
+$year_level = "N/A";
+
+$stmt_student = $mysqli->prepare("SELECT first_name, last_name, course, year_level FROM student WHERE user_id = ?");
+if ($stmt_student) {
+    $stmt_student->bind_param('i', $user_id);
+    $stmt_student->execute();
+    $result_student = $stmt_student->get_result();
+    if ($result_student->num_rows === 1) {
+        $student_data = $result_student->fetch_assoc();
+        $fullname = htmlspecialchars($student_data['first_name'] . ' ' . $student_data['last_name']);
+        $course = htmlspecialchars($student_data['course']);
+        $year_level = htmlspecialchars($student_data['year_level']);
+    }
+    $stmt_student->close();
+}
+
+// --- 3. Fetch All Active OJT Postings ---
+$job_posts = [];
+$stmt_posts = $mysqli->prepare("
+    SELECT 
+        p.posting_id, 
+        p.title, 
+        p.description,
+        p.slot_available,
+        c.company_name
+    FROM intern_posting p 
+    JOIN company c ON p.company_id = c.company_id 
+    WHERE p.status = 'Active' 
+    ORDER BY p.create_at DESC
+");
+
+if ($stmt_posts) {
+    $stmt_posts->execute();
+    $result_posts = $stmt_posts->get_result();
+    while ($row = $result_posts->fetch_assoc()) {
+        $job_posts[] = $row;
+    }
+    $stmt_posts->close();
+}
+
+// --- 4. Placeholder Data for Status Cards ---
 $hours_logged = 120;
 $total_hours = 480;
-$current_status = "Seeking Placement"; // "Currently Interning" / "OJT Completed"
 $applications_submitted = 5;
 $interviews_scheduled = 2;
-// ----------------------------------------
+$current_status = "Seeking Placement"; 
+
+$mysqli->close();
 ?>
 
 <!DOCTYPE html>
@@ -28,91 +71,99 @@ $interviews_scheduled = 2;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard | Career Path</title>
     <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="studentdashboard.css">
+   
 </head>
 <body>
 
     <div class="sidebar">
         <div class="logo">Career Path</div>
-        <nav>
-            <a href="studentdashboard.php" class="nav-link active"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="#" class="nav-link"><i class="fas fa-search"></i> Job Listings</a>
-            <a href="#" class="nav-link"><i class="fas fa-tasks"></i> My Applications</a>
-            <a href="#"class="nav-link"><i class="fa-solid fa-user"></i> Profile & Resume</a>
-            <a href="logout.php" class="nav-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <nav class="menu">
+            <a href="#" class="nav-link active"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="#" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
+            <a href="#" class="nav-link"><i class="fa-solid fa-file-contract"></i> My Applications</a>
+            <a href="#" class="nav-link"><i class="fa-solid fa-user-circle"></i> Profile & Resume</a>
+            <a href="#" class="nav-link"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
 
     <div class="main-content">
-        
         <header class="header">
-            <h1>Student Dashboard</h1>
+            <h1>Welcome, <?php echo $fullname; ?>!</h1>
             <div class="user-info">
-                <i class="fas fa-user-alt"></i> Logged in as: <a href="#"><?php echo $username; ?></a>
+                 <i class="fa-solid fa-user-circle"></i> <?php echo $fullname; ?>
             </div>
         </header>
 
         <div class="dashboard-body">
-
-            <div class="grid-container">
+            
+            <section class="grid-container">
                 <div class="status-card main-status-card">
-                    <p style="font-size: 1.1em; font-weight: 600;">Current OJT Status</p>
-                    <strong style="color: red;"><?php echo $current_status; ?></strong>
-                    <p>Next Step: Start applying for available positions below.</p>
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <p>OJT Hours Logged</p>
+                        <strong><?php echo $hours_logged; ?> / <?php echo $total_hours; ?></strong>
+                    </div>
                 </div>
-
-                <div class="status-card">
-                    <p>OJT Hours Logged</p>
-                    <strong><?php echo $hours_logged; ?></strong>
-                    <p>of <?php echo $total_hours; ?> required hours</p>
-                </div>
-
-                <div class="status-card">
-                    <p>Applications Submitted</p>
-                    <strong><?php echo $applications_submitted; ?></strong>
-                    <p><?php echo $interviews_scheduled; ?> interview(s) scheduled</p>
-                </div>
-            </div>
-
-            <div class="section-container">
-                <h2><i class="fas fa-briefcase"></i> Latest Internship Listings</h2>
                 
-                <div style="display: flex; gap: 15px; margin-bottom: 20px;">
-                    <input type="text" placeholder="Search by Company or Position..." style="padding: 10px; flex-grow: 1; border: 1px solid #ccc; border-radius: 5px;">
-                    <button style="background-color: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Search</button>
-                    <select style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                        <option>Filter by Industry</option>
-                        <option>IT & Software</option>
-                        <option>HR & Admin</option>
-                        <option>Accounting</option>
-                    </select>
+                <div class="status-card main-status-card">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <p>Current Status</p>
+                        <strong><?php echo $current_status; ?></strong>
+                    </div>
                 </div>
 
-                <div class="job-listing-card">
-                    <h3>Software Development Intern</h3>
-                    <p><strong>Company:</strong> TechSolutions Inc. | <strong>Industry:</strong> IT & Software | <strong>Status:</strong> Accepting Applications</p>
-                    <a href="#">View Details</a>
+                <div class="status-card">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <div>
+                        <p>Applications Sent</p>
+                        <strong><?php echo $applications_submitted; ?></strong>
+                    </div>
                 </div>
-                <div class="job-listing-card">
-                    <h3>Marketing Assistant (OJT)</h3>
-                    <p><strong>Company:</strong> Acme Corp | <strong>Industry:</strong> Marketing | <strong>Status:</strong> Accepting Applications</p>
-                    <a href="#">View Details</a>
+                
+                <div class="status-card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <div>
+                        <p>Interviews Scheduled</p>
+                        <strong><?php echo $interviews_scheduled; ?></strong>
+                    </div>
                 </div>
-                <div class="job-listing-card">
-                    <h3>Accounting Specialist Trainee</h3>
-                    <p><strong>Company:</strong> Global Finance Co. | <strong>Industry:</strong> Finance | <strong>Status:</strong> Application Deadline Soon</p>
-                    <a href="#">View Details</a>
-                </div>
+            </section>
 
+            <div class="available-jobs section-container">
+                <h2><i class="fas fa-handshake"></i> Active Internship Opportunities (<?php echo count($job_posts); ?>)</h2>
+                <div> 
+                
+                <?php if (!empty($job_posts)): ?>
+                    <?php foreach ($job_posts as $post): ?>
+                        <div class="job-listing-card">
+                            <h3><?php echo htmlspecialchars($post['title']); ?></h3>
+                            <p>
+                                <strong>Company:</strong> <?php echo htmlspecialchars($post['company_name']); ?> | 
+                                <strong>Slots:</strong> <?php echo htmlspecialchars($post['slot_available']); ?> | 
+                                <strong>Status:</strong> Active
+                            </p>
+                            <a href="view_post.php?id=<?php echo htmlspecialchars($post['posting_id']); ?>">View Details</a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="job-listing-card empty-state">
+                        <h3>No Active OJT Postings Yet</h3>
+                        <p>Companies haven't posted new opportunities. Check back later!</p>
+                    </div>
+                <?php endif; ?>
+
+                </div>
             </div>
 
-            <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
+            <div class="grid-container" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
                 
                 <div class="section-container">
                     <h2><i class="fas fa-user-cog"></i> My Profile Summary</h2>
                     <p><strong>Name:</strong> <?php echo $fullname; ?></p>
                     <p><strong>Course:</strong> <?php echo $course; ?></p>
-                    <p><strong>Year Level:</strong> 4th Year</p>
+                    <p><strong>Year Level:</strong> <?php echo $year_level; ?></p>
                     <p style="margin-top: 15px;"><a href="#" style="font-weight: 600;"><i class="fas fa-edit"></i> Edit Profile & Upload Resume</a></p>
                 </div>
 
