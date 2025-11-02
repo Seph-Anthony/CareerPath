@@ -113,7 +113,7 @@ $mysqli->close();
     <div class="sidebar">
         <div class="logo">Career Path</div>
         <nav class="menu">
-            <a href="studentdashboard.php" class="nav-link"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="studentdashboard.php" class="nav-link active"><i class="fa-solid fa-house"></i> Dashboard</a>
             <a href="#" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
             <a href="#" class="nav-link"><i class="fa-solid fa-file-contract"></i> My Applications</a>
             <a href="#" class="nav-link"><i class="fa-solid fa-user-circle"></i> Profile & Resume</a>
