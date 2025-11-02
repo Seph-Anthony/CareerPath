@@ -112,13 +112,11 @@ $mysqli->close();
     </div>
 
     <nav class="menu">
-      <a href="companydashboard.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
-      <a href="post_internship.php"><i class="fa-solid fa-briefcase"></i> Post Internships</a> 
-      <a href="#"><i class="fa-solid fa-users"></i> Applicants</a>
-      <a href="#"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
-      <a href="#"><i class="fa-solid fa-user"></i> Profile</a>
-      <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-    </nav>
+    <a href="companydashboard.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
+    <a href="post_internship.php"><i class="fa-solid fa-briefcase"></i> Post Internship</a>
+    <a href="view_applicants.php"><i class="fa-solid fa-users"></i> View Applicants</a> <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
+    <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+</nav>
   </aside>
 
   <main class="main-content">

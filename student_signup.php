@@ -1,18 +1,17 @@
 <?php
 // student_signup.php
-// Assumes 'db_connect.php' defines the connection object as $mysqli
+session_start();
 require_once 'db_connect.php'; 
 
 // --- Helper Function ---
-// Function to handle errors, rollback transactions, close connection, and redirect
 function handleError(mysqli $mysqli, $message) {
-    // Attempt to roll back the transaction if the connection is alive
     if ($mysqli->ping()) {
-        $mysqli->rollback();
+        if ($mysqli->begin_transaction()) {
+            $mysqli->rollback();
+        }
         $mysqli->close();
     }
     
-    // Output the error message and redirect
     die("<script>
             alert('" . addslashes($message) . "'); 
             window.history.back();
@@ -24,57 +23,57 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     handleError($mysqli, 'Invalid request method.');
 }
 
-// Collect and trim inputs
+// Collect and trim inputs for Student Table
 $first_name  = isset($_POST['first_name'])   ? trim($_POST['first_name'])   : '';
 $last_name   = isset($_POST['last_name'])    ? trim($_POST['last_name'])    : '';
 $course      = isset($_POST['course'])       ? trim($_POST['course'])       : '';
 $year_level  = isset($_POST['year_level'])   ? trim($_POST['year_level'])   : '';
-$description = isset($_POST['description'])  ? trim($_POST['description'])  : NULL; // NULL is allowed in your schema
-$username    = isset($_POST['username'])     ? trim($_POST['username'])     : '';
-$password    = isset($_POST['password'])     ? $_POST['password']           : '';
-$role        = "student"; // Fixed role
-$status      = "Active";  // Default status for `student` table
+$description = isset($_POST['description'])  ? trim($_POST['description'])  : NULL;
+$status      = isset($_POST['status'])       ? trim($_POST['status'])       : 'Active'; 
 
-// Basic check for required fields
-if (empty($username) || empty($password) || empty($first_name) || empty($last_name) || empty($course) || empty($year_level)) {
-    handleError($mysqli, 'Please fill in all required fields.');
+// Collect and trim inputs for Users Table & Student Contact Info
+$email          = isset($_POST['email'])          ? trim($_POST['email'])          : '';
+$phone_number   = isset($_POST['contact'])        ? trim($_POST['contact'])        : '';
+$username       = isset($_POST['username'])       ? trim($_POST['username'])       : '';
+$password       = isset($_POST['password'])       ? $_POST['password']             : '';
+$role           = isset($_POST['role'])           ? trim($_POST['role'])           : 'student';
+
+
+if (empty($username) || empty($password) || empty($first_name) || empty($email) || empty($phone_number)) {
+    handleError($mysqli, 'All required fields must be filled out, including contact info.');
 }
 
-// Hash password before storing
+// Hash the password for security
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-// --- Database Transaction for Atomicity ---
-// Start transaction
-$mysqli->autocommit(FALSE);
+// --- 1. Start Transaction ---
+$mysqli->begin_transaction();
 
 try {
-    // 1️⃣ Insert user account into `users` table
-    // NOTE: We exclude 'status' from 'users' table due to the previous 'Unknown column' error
-    $insertUser = $mysqli->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
+    // --- 2. Insert into users table (CLEANED: Only login details) ---
+    $insertUser = $mysqli->prepare("
+        INSERT INTO users (username, password, role, status) 
+        VALUES (?, ?, ?, ?)
+    ");
     
-    if (!$insertUser) {
-        throw new Exception("Prepare statement failed (users): " . $mysqli->error);
-    }
-    
-    $insertUser->bind_param('sss', $username, $hashed_password, $role);
+    $insertUser->bind_param('ssss', $username, $hashed_password, $role, $status);
     $ok1 = $insertUser->execute();
-    $user_id = $mysqli->insert_id;
-    $insertUser->close();
-    
+
     if (!$ok1) {
-        throw new Exception("Failed to create user account. DB error: " . $mysqli->error);
-    }
-    
-    // 2️⃣ Insert student info into `student` table
-    // The `student` table schema includes 'status', so we include it here.
-    $insertStudent = $mysqli->prepare("INSERT INTO student (user_id, first_name, last_name, course, year_level, description, status) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    
-    if (!$insertStudent) {
-        throw new Exception("Prepare statement failed (student): " . $mysqli->error);
+        throw new Exception("Error saving user credentials: " . $mysqli->error);
     }
 
-    // i for user_id (int), ssssss for the 6 string parameters
-    $insertStudent->bind_param('issssss', $user_id, $first_name, $last_name, $course, $year_level, $description, $status);
+    $user_id = $insertUser->insert_id;
+    $insertUser->close();
+    
+    // --- 3. Insert into student table (UPDATED: Now includes email and phone_number) ---
+    $insertStudent = $mysqli->prepare("
+        INSERT INTO student (user_id, first_name, last_name, course, year_level, email, phone_number, description, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ");
+
+    // The types: i, s, s, s, s, s, s, s, s (9 parameters)
+    $insertStudent->bind_param('issssssss', $user_id, $first_name, $last_name, $course, $year_level, $email, $phone_number, $description, $status);
     $ok2 = $insertStudent->execute();
 
     $insertStudent->close();
@@ -83,7 +82,7 @@ try {
         throw new Exception("Error saving student info: " . $mysqli->error);
     }
 
-    // 3️⃣ Both queries succeeded, commit the transaction
+    // 4. Both queries succeeded, commit the transaction
     $mysqli->commit();
     $mysqli->close();
 
@@ -94,23 +93,22 @@ try {
           </script>");
 
 } catch (Exception $e) {
-    // 4️⃣ Something failed, roll back all changes
+    // 5. Something failed, roll back all changes
+    $mysqli->rollback();
+    
     $error_msg = $e->getMessage();
     
-    // Handle specific error types
     if (strpos($error_msg, 'Duplicate entry') !== false && strpos($error_msg, 'username') !== false) {
         $user_friendly_msg = 'That username is already taken. Please choose another one.';
     } else {
-        // Fallback friendly message (technical error logged to console)
-        $user_friendly_msg = 'An error occurred during registration. Please try again.';
+        error_log("Student Signup Error: " . $error_msg);
+        $user_friendly_msg = 'An error occurred during registration. Please try again. (Technical error logged.)';
     }
 
-    // Log the technical error to console for your debugging
-    echo "<script>console.error('Registration Error:', '" . addslashes($error_msg) . "');</script>";
-
-    handleError($mysqli, $user_friendly_msg);
+    // Final alert and redirect
+    die("<script>
+            alert('" . addslashes($user_friendly_msg) . "'); 
+            window.history.back();
+         </script>");
 }
-
-// Close connection if not already closed
-$mysqli->close();
 ?>

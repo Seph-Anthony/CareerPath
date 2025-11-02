@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 01, 2025 at 07:22 PM
+-- Generation Time: Nov 02, 2025 at 07:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -135,6 +135,13 @@ CREATE TABLE `intern_application` (
   `status` enum('Pending','Reviewed','Interview Scheduled','Hired','Rejected') NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `intern_application`
+--
+
+INSERT INTO `intern_application` (`application_id`, `student_id`, `posting_id`, `application_date`, `status`) VALUES
+(1, 6, 2, '2025-11-02 17:09:29', 'Reviewed');
+
 -- --------------------------------------------------------
 
 --
@@ -205,6 +212,8 @@ CREATE TABLE `student` (
   `last_name` varchar(50) NOT NULL,
   `course` varchar(50) NOT NULL,
   `year_level` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
   `description` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -213,13 +222,13 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `last_name`, `course`, `year_level`, `description`, `status`) VALUES
-(1, 1, 'Joseph', 'Christian', 'BSIT', '2nd Year', 'I love to cheer myself by telling how bad I am', 'Active'),
-(2, 3, 'Larry', 'Bustamante', 'BSIT', '1st Year', 'I love food', 'Active'),
-(3, 6, 'Joseph', 'Arambala', 'BS in Information Technology', '3rd Year', 'I love to code a lot', 'Active'),
-(4, 7, 'Larry', 'Mike', 'BS in Criminology', '3rd Year', 'I love to shoot guns', 'Active'),
-(5, 8, 'Joseph', 'Anthony', 'BS in Information Technology', '3rd Year', 'I love to code a lot', 'Active'),
-(6, 11, 'Lance', 'Mayormita', 'BS in Information Technology', '2nd Year', 'I love to play games and have some fun with the co', 'Active');
+INSERT INTO `student` (`student_id`, `user_id`, `first_name`, `last_name`, `course`, `year_level`, `email`, `phone_number`, `description`, `status`) VALUES
+(1, 1, 'Joseph', 'Christian', 'BSIT', '2nd Year', 'example@gmail.com', '09675432134', 'I love to cheer myself by telling how bad I am', 'Active'),
+(2, 3, 'Larry', 'Bustamante', 'BSIT', '1st Year', 'larlar@gmail.com', '09675454532', 'I love food', 'Active'),
+(3, 6, 'Joseph', 'Arambala', 'BS in Information Technology', '3rd Year', 'joseph@gmail.com', '09876543211', 'I love to code a lot', 'Active'),
+(4, 7, 'Larry', 'Mike', 'BS in Criminology', '3rd Year', 'Mikeeey@gmail.com', '09765453321', 'I love to shoot guns', 'Active'),
+(5, 8, 'Joseph', 'Anthony', 'BS in Information Technology', '3rd Year', 'anthony@gmail.com', '09878656745', 'I love to code a lot', 'Active'),
+(6, 11, 'Lance', 'Mayormita', 'BS in Information Technology', '2nd Year', 'mrlance@gmail.com', '09765435721', 'I love to play games and have some fun with the co', 'Active');
 
 -- --------------------------------------------------------
 
@@ -380,7 +389,7 @@ ALTER TABLE `evaluation`
 -- AUTO_INCREMENT for table `intern_application`
 --
 ALTER TABLE `intern_application`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `intern_posting`

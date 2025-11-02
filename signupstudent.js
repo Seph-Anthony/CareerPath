@@ -3,15 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const firstName = document.querySelector('input[name="first_name"]');
   const lastName = document.querySelector('input[name="last_name"]');
-  // 🐛 FIX THIS LINE: Change 'input' to 'select'
   const course = document.querySelector('select[name="course"]'); 
   const yearLevel = document.querySelector('select[name="year_level"]');
   const description = document.querySelector('textarea[name="description"]');
+  
+  // 🌟 NEW FIELDS 🌟
+  const email = document.querySelector('input[name="email"]'); 
+  const contact = document.querySelector('input[name="contact"]');
+  // 🌟 END NEW FIELDS 🌟
+
   const username = document.querySelector('input[name="username"]');
   const password = document.querySelector('input[name="password"]');
   const confirmPassword = document.querySelector('input[name="confirm_password"]');
 
-// ... rest of the file
+
   let usernameAvailable = false;
 
   // === Check Username Availability (AJAX) ===
@@ -46,18 +51,28 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lastName.value.trim() === "") return alert("Please enter your last name.");
     if (course.value.trim() === "") return alert("Please enter your course.");
     if (yearLevel.value.trim() === "") return alert("Please select your year level.");
+    
+    // 🌟 NEW VALIDATION CHECKS 🌟
+    if (email.value.trim() === "") return alert("Please enter your email address.");
+    if (contact.value.trim() === "") return alert("Please enter your contact number.");
+    // 🌟 END NEW VALIDATION CHECKS 🌟
+
     if (username.value.trim().length < 4) return alert("Username must be at least 4 characters.");
     if (!usernameAvailable) return alert("Username is not available. Please choose another.");
+    
     const passwordValue = password.value;
+    // Password must be at least 8 chars, 1 letter, 1 number, 1 special char
     const strongPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    
     if (!strongPassword.test(passwordValue))
-      return alert("Password must include letters, numbers, and a special character.");
+      return alert("Password must be at least 8 characters long and include at least one letter, one number, and one special character (@$!%*?&).");
+    
     if (password.value !== confirmPassword.value)
       return alert("Passwords do not match. Please check again.");
 
-    if (!confirm("Are you sure you want to sign up with these details?")) return;
+    if (!confirm("Are you sure you want to register as a Student?")) return;
 
-    // ✅ Submit form if everything passes
+    // Submit the form if all checks pass
     form.submit();
   });
 });
