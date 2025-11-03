@@ -95,7 +95,7 @@ if ($stmt) {
         <nav class="menu">
             <a href="companydashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
             <a href="post_internship.php" class="active"><i class="fa-solid fa-briefcase"></i> Post Internships</a> 
-            <a href="#"><i class="fa-solid fa-users"></i> Applicants</a>
+            <a href="view_applicants.php"><i class="fa-solid fa-users"></i> Applicants</a>
             <a href="#"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
             <a href="#"><i class="fa-solid fa-user"></i> Profile</a>
             <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>

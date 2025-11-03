@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 02, 2025 at 07:13 PM
+-- Generation Time: Nov 03, 2025 at 05:30 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -77,7 +77,8 @@ INSERT INTO `company` (`company_id`, `user_id`, `company_name`, `industry`, `add
 (2, 5, 'BDO', 'Marketing', 'Ward 3 Minglanilla Cebu', 'Larry Boss', 'zennia@gmail.com', '12345678911', '', ''),
 (3, 9, 'Azzella Properties', 'Real Estate', 'Lipata Minglanilla Cebu', 'Dave Joseph Cruz', 'azzella@gmail.com', '09345674532', '', ''),
 (4, 12, 'Julies BakeShop', 'Bakery', 'Ward 2 Minglanilla Cebu', 'Dina Ko De la Cruz', 'julies@gmail.com', '09123456789', '', ''),
-(5, 13, 'Julies BakeShop', 'Bakery', 'Ward 2 Minglanilla Cebu', 'Dina Ko De la Cruz', 'julies@gmail.com', '09123456789', '', '');
+(5, 13, 'Julies BakeShop', 'Bakery', 'Ward 2 Minglanilla Cebu', 'Dina Ko De la Cruz', 'julies@gmail.com', '09123456789', '', ''),
+(6, 14, 'Chowking', 'Fast Food Restaurant', 'Lipata Minglanilla Cebu', 'Chowfan De la Fienta', 'chowchow@gmail.com', '09675454321', '', '');
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,8 @@ CREATE TABLE `intern_application` (
 --
 
 INSERT INTO `intern_application` (`application_id`, `student_id`, `posting_id`, `application_date`, `status`) VALUES
-(1, 6, 2, '2025-11-02 17:09:29', 'Reviewed');
+(1, 6, 2, '2025-11-02 17:09:29', 'Reviewed'),
+(2, 5, 2, '2025-11-03 14:39:51', 'Reviewed');
 
 -- --------------------------------------------------------
 
@@ -261,7 +263,8 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `status`) VALUES
 (10, 'andry123456', '$2y$10$LiyVug7Tv9WQmESEw6ZbauhoGeof/AJqM22scA9Zn040IrNo0T0Fe', 'coordinator', 'Active'),
 (11, 'lancelance', '$2y$10$34uKePT68M1/t5nMibM7ROFuH5r88kPi.z0raeIFYj/7k/9ZG7cEG', 'student', 'Active'),
 (12, 'juliesbake', '$2y$10$WuwRyxu/9auxFEdUJnVqEOVnn2f.7FvdLsgcegnBDRDNT1pMYAySq', 'company', 'Active'),
-(13, 'juliesss', '$2y$10$JmT.nSdYPcgA6hjR8fPuW.j6epiVEaMRuis4FkHpdyczDJRyiEEmy', 'company', 'Active');
+(13, 'juliesss', '$2y$10$JmT.nSdYPcgA6hjR8fPuW.j6epiVEaMRuis4FkHpdyczDJRyiEEmy', 'company', 'Active'),
+(14, 'chowchow', '$2y$10$xnnARrcGh7sxC2Q9lhGKX.TbKESNhk8MemGDOXK9V881W/ILaRXK.', 'company', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -371,7 +374,7 @@ ALTER TABLE `application`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `coordinator`
@@ -389,7 +392,7 @@ ALTER TABLE `evaluation`
 -- AUTO_INCREMENT for table `intern_application`
 --
 ALTER TABLE `intern_application`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `intern_posting`
@@ -419,7 +422,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

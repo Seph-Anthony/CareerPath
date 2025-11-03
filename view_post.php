@@ -117,7 +117,7 @@ $mysqli->close();
             <a href="#" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
             <a href="#" class="nav-link"><i class="fa-solid fa-file-contract"></i> My Applications</a>
             <a href="#" class="nav-link"><i class="fa-solid fa-user-circle"></i> Profile & Resume</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
 

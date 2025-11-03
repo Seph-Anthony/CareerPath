@@ -1,0 +1,141 @@
+/*
+ * manage_placements.css
+ * This file contains styles specific to the Coordinator's OJT Posting Management views.
+ */
+
+.table-container {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.placement-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.placement-table th, .placement-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+.placement-table th {
+    background-color: rgb(247, 250, 252);
+    color: rgb(32, 64, 227);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.placement-table tr:hover {
+    background-color: #f5f5ff;
+}
+
+/* Status classes for list view */
+.status-active { background-color: #d4edda; color: #155724; }
+.status-inactive, .status-expired { background-color: #f8d7da; color: #721c24; }
+.status-pending-review { background-color: #fff3cd; color: #856404; }
+
+.status-active, .status-inactive, .status-pending-review, .status-expired {
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.action-link {
+    color: rgb(32, 64, 227);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.action-link:hover {
+    color: rgb(25, 50, 190);
+    text-decoration: underline;
+}
+
+/* --- Styles for the Detail/Review Page (view_placement_coordinator.php) --- */
+
+.review-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.posting-header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+.posting-header h2 {
+    margin: 0;
+    font-size: 28px;
+    color: rgb(32, 64, 227);
+}
+
+.detail-section {
+    margin-top: 25px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.detail-grid-placement {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns for posting details */
+    gap: 20px;
+    margin-top: 15px;
+}
+.detail-item-placement strong {
+    display: block;
+    color: #555;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+.detail-item-placement span {
+    font-size: 16px;
+    color: #222;
+}
+
+.description-box-placement {
+    background: #f7f9fc;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid rgb(32, 64, 227);
+    white-space: pre-wrap;
+}
+
+.review-form-container {
+    padding: 20px;
+    background: #fff3cd40; /* Light yellow background for actions */
+    border: 1px solid #ffc10740;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.review-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-right: 10px;
+}
+.btn-approve {
+    background-color: #28a745;
+    color: white;
+}
+.btn-approve:hover {
+    background-color: #1e7e34;
+}
+.btn-reject {
+    background-color: #dc3545;
+    color: white;
+}
+.btn-reject:hover {
+    background-color: #c82333;
+}

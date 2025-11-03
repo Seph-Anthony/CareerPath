@@ -15,7 +15,7 @@ function handleError(mysqli $mysqli, $message) {
     die("<script>
             alert('" . addslashes($message) . "'); 
             window.history.back();
-         </script>");
+           </script>");
 }
 
 // --- Input Collection and Validation ---
@@ -34,6 +34,7 @@ $username       = isset($_POST['username']) ? trim($_POST['username']) : '';
 $password       = isset($_POST['password']) ? $_POST['password'] : '';
 
 $role           = "company"; // Fixed role
+$status         = "Pending"; // <--- CRITICAL CHANGE: Set initial status for companies to Pending
 
 // Simple check for required fields
 if (empty($username) || empty($password) || empty($company_name) || empty($email) || empty($address) || empty($contact_person)) {
@@ -49,15 +50,15 @@ $mysqli->autocommit(FALSE);
 
 try {
     // 3️⃣ Insert user account into `users` table
-    // NOTE: Removed 'status' column due to 'Unknown column' error
-    $insertUser = $mysqli->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
+    // MODIFICATION: Explicitly include 'status' in the columns and binding
+    $insertUser = $mysqli->prepare("INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)");
     
     if (!$insertUser) {
         throw new Exception("Prepare statement failed (users): " . $mysqli->error);
     }
     
-    // 'sss' for 3 string parameters: username, hashed_password, role
-    $insertUser->bind_param('sss', $username, $hashed_password, $role);
+    // 'ssss' for 4 string parameters: username, hashed_password, role, status
+    $insertUser->bind_param('ssss', $username, $hashed_password, $role, $status);
     $ok1 = $insertUser->execute();
     $user_id = $mysqli->insert_id;
     $insertUser->close();
@@ -87,11 +88,11 @@ try {
     $mysqli->commit();
     $mysqli->close();
 
-    // Success message and redirect
+    // Success message and redirect (Updated message to reflect Pending status)
     die("<script>
-            alert('Company registration successful! You can now sign in.');
+            alert('Company registration successful! Your account is pending review by the Coordinator. You will be able to sign in once approved.');
             window.location.href = 'signincompany.html';
-          </script>");
+         </script>");
 
 } catch (Exception $e) {
     // 6️⃣ Something failed, roll back all changes

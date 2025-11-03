@@ -91,7 +91,7 @@ foreach ($applicants_data as $applicant) {
         <div class="logo"><h2>Career Path</h2></div>
         <nav class="menu">
             <a href="companydashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="#"><i class="fa-solid fa-briefcase"></i> Post Internship</a>
+            <a href="post_internship.php"><i class="fa-solid fa-briefcase"></i> Post Internship</a>
             <a href="#" class="active"><i class="fa-solid fa-users"></i> View Applicants</a> <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
             <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
         </nav>
