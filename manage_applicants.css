@@ -1,0 +1,139 @@
+/* manage_applicants.css */
+
+.applicants-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    font-size: 18px;
+    color: #333;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.card-header h2 i {
+    color: rgb(32, 64, 227);
+}
+
+.slot-info {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    background-color: #f0f4ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Table Styling */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.applicants-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+}
+
+.applicants-table th, .applicants-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.applicants-table thead th {
+    background-color: rgb(32, 64, 227);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.applicants-table thead th:first-child {
+    border-top-left-radius: 6px;
+}
+.applicants-table thead th:last-child {
+    border-top-right-radius: 6px;
+}
+
+.applicants-table tbody tr:hover {
+    background-color: #f7f9ff;
+}
+
+.applicants-table td small {
+    display: block;
+    color: #999;
+    font-size: 12px;
+}
+
+/* Status Tags */
+.status-tag {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+}
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+.status-rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+.status-accepted {
+    background-color: #d4edda;
+    color: #155724;
+}
+.status-interviewing {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+/* Action Button */
+.btn-detail {
+    background-color: #3f51b5; /* Slightly different blue for action */
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+.btn-detail:hover {
+    background-color: #2c387e;
+}
+
+/* No data message styling */
+.cta-button {
+    background-color: rgb(32, 64, 227); 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none; 
+    transition: background-color 0.3s;
+}
+.cta-button:hover {
+    background-color: rgb(25, 50, 190);
+}

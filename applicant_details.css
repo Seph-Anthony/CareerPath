@@ -1,0 +1,129 @@
+/* applicant_details.css - Specific styling for the applicant review page */
+
+.detail-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.profile-header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+.profile-header h2 {
+    font-size: 24px;
+    color: rgb(32, 64, 227);
+    margin-bottom: 5px;
+}
+.profile-header p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+}
+/* *** IMPROVEMENT: Grid layout for profile info *** */
+.profile-info {
+    display: grid;
+    /* Use 3 equal columns for better balance */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    margin-bottom: 25px;
+}
+.info-item {
+    background-color: #f7f9ff;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 3px solid rgb(32, 64, 227);
+}
+/* Ensure the description box spans across all columns */
+.info-item[style*="grid-column: span 2"] {
+    grid-column: span 3; /* Force description to span the full width */
+}
+.info-item strong {
+    display: block;
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+}
+.info-item span {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* *** IMPROVEMENT: Status Tag Styling *** */
+.status-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+.status-pending {
+    background-color: #fff3cd; /* Light yellow */
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+.status-interviewing {
+    background-color: #cce5ff; /* Light blue */
+    color: #004085;
+    border: 1px solid #b8daff;
+}
+.status-accepted {
+    background-color: #d4edda; /* Light green */
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.status-rejected {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+/* End Status Tag Styling */
+
+
+.status-management {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+.status-management h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.status-form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 15px;
+    width: 200px; /* Give the select box a fixed width for alignment */
+}
+.btn-update {
+    background-color: #28a745; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+.btn-update:hover {
+    background-color: #218838;
+}
+.btn-download {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 600;
+}
