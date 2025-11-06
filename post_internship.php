@@ -35,72 +35,24 @@ if ($stmt) {
   <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="companydashboard.css"> 
-  <style>
-    /* Custom styles for form layout */
-    .dashboard-body { padding: 40px; }
-    .form-container {
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    .form-container h2 {
-        color: rgb(32, 64, 227);
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-    }
-    .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-    .form-group { display: flex; flex-direction: column; }
-    .form-group.full-width { grid-column: 1 / -1; }
-    .form-group label {
-        font-weight: 600;
-        margin-bottom: 5px;
-        color: #555;
-        font-size: 14px;
-    }
-    .form-group input, .form-group textarea {
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 14px;
-    }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-    .submit-btn {
-        grid-column: 1 / -1;
-        background-color: rgb(32, 64, 227);
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-        transition: background-color 0.3s;
-    }
-    .submit-btn:hover { background-color: rgb(25, 50, 190); }
-  </style>
 </head>
 <body>
 
 <div class="dashboard-container">
-    <aside class="sidebar">
-        <div class="logo"><h2>Career Path</h2></div>
-        <nav class="menu">
-            <a href="companydashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="post_internship.php" class="active"><i class="fa-solid fa-briefcase"></i> Post Internships</a> 
-            <a href="view_applicants.php"><i class="fa-solid fa-users"></i> Applicants</a>
-            <a href="#"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
-            <a href="#"><i class="fa-solid fa-user"></i> Profile</a>
-            <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-        </nav>
-    </aside>
+  <aside class="sidebar">
+    <div class="logo">
+      <h2>Career Path</h2>
+    </div>
+
+    <nav class="menu">
+    <a href="companydashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
+    <a href="post_internship.php" class="active"><i class="fa-solid fa-file-circle-plus"></i> Post Internship</a>
+    <a href="manage_applicants.php"><i class="fa-solid fa-users"></i> View Applicants</a>
+    <a href="intern_progress.php"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
+    <a href="company_profile.php"><i class="fa-solid fa-user-circle"></i> Profile</a>
+    <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+</nav>
+  </aside>
 
     <main class="main-content">
         <header class="topbar">

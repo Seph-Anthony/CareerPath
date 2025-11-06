@@ -6,7 +6,7 @@ $DB_HOST = 'localhost';
 $DB_USER = 'root';
 $DB_PASS = ''; // or your XAMPP password
 $DB_NAME = 'ojtfind';
-$DB_PORT = 3307; // change to 3306 if default
+$DB_PORT = 3306; // change to 3306 if default
 
 // create connection
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME, (int)$DB_PORT);
