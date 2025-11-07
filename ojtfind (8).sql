@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 05, 2025 at 08:06 PM
+-- Generation Time: Nov 07, 2025 at 07:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,13 @@ CREATE TABLE `activity-log` (
   `activity_des` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `activity-log`
+--
+
+INSERT INTO `activity-log` (`log_id`, `student_id`, `company_id`, `activity_des`, `created_at`) VALUES
+(2, 6, 3, 'Completed project setup and initial database schema design.', '2025-11-07 17:49:06');
 
 -- --------------------------------------------------------
 
@@ -141,9 +148,7 @@ CREATE TABLE `intern_application` (
 --
 
 INSERT INTO `intern_application` (`application_id`, `student_id`, `posting_id`, `application_date`, `status`) VALUES
-(1, 6, 2, '2025-11-02 17:09:29', 'Reviewed'),
-(2, 5, 2, '2025-11-03 14:39:51', 'Reviewed'),
-(3, 6, 3, '2025-11-05 17:31:26', 'Pending');
+(3, 6, 3, '2025-11-05 17:31:26', 'Hired');
 
 -- --------------------------------------------------------
 
@@ -168,8 +173,8 @@ CREATE TABLE `intern_posting` (
 
 INSERT INTO `intern_posting` (`posting_id`, `company_id`, `title`, `description`, `requirements`, `slot_available`, `create_at`, `status`) VALUES
 (1, 5, 'Julies Bakery Worker Employee', 'This is just a test to prove if it will work or not', 'Good Attitude, Good Communicating skills, and Good math skills', 2, '2025-11-01 17:42:19.934600', 'Active'),
-(2, 3, 'OJT Employees to Handle the computer processing of the document', 'This is just a test again to see if it will work', 'Computer literate and good in communicating skills', 3, '2025-11-01 17:53:39.317653', 'Pending Review'),
-(3, 3, 'FOR THE HR DEPARTMENT', 'Good with computers or technology in general', 'Be knowledgeable enough for doing the coding', 2, '2025-11-05 16:59:39.593591', 'Active');
+(3, 3, 'FOR THE HR DEPARTMENT', 'Good with computers or technology in general', 'Be knowledgeable enough for doing the coding', 2, '2025-11-05 16:59:39.593591', 'Active'),
+(4, 3, 'CONTRACTORS ASSISTANT IN BUILDING THE DECAS', 'Needing for assistance in creating the buildings on the lipata part', 'good in math and everything', 3, '2025-11-07 16:19:23.343439', 'Active');
 
 -- --------------------------------------------------------
 
@@ -364,7 +369,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activity-log`
 --
 ALTER TABLE `activity-log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `application`
@@ -400,7 +405,7 @@ ALTER TABLE `intern_application`
 -- AUTO_INCREMENT for table `intern_posting`
 --
 ALTER TABLE `intern_posting`
-  MODIFY `posting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `posting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `invites`

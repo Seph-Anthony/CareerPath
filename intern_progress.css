@@ -1,0 +1,115 @@
+/* intern_progress.css - Styling for the active intern list and activity page elements */
+
+/* --- Intern List Table (used on intern_progress.php) --- */
+
+.progress-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.progress-table th, .progress-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+.progress-table th {
+    background-color: #f7f9ff;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.progress-table tr:hover {
+    background-color: #fafafa;
+}
+.btn-view {
+    background-color: #2040e3;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+.btn-view:hover {
+    background-color: #1a32b9;
+}
+.no-interns {
+    padding: 20px;
+    text-align: center;
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+/* --- Activity Log Styles (used on view_intern_activity.php) --- */
+
+.log-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+}
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+/* Vertical line for the timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+    padding-left: 20px;
+}
+/* Circle marker for each log entry */
+.timeline-item::before {
+    content: '\f058'; /* Font Awesome check circle */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: -18px;
+    top: 0;
+    color: #2040e3;
+    background: white;
+    border: 3px solid white;
+    border-radius: 50%;
+    font-size: 16px;
+}
+.log-date {
+    display: block;
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 5px;
+}
+.log-description {
+    font-size: 16px;
+    color: #333;
+    background-color: #f7f9ff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #eef3ff;
+}
+.no-logs {
+    padding: 20px;
+    text-align: center;
+    background: #fdfdfd;
+    color: #555;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin-top: 20px;
+}

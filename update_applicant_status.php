@@ -1,7 +1,7 @@
 <?php
 // update_applicant_status.php - Handles status change for an application
 session_start();
-require_once 'db_connect.php'; 
+require_once 'db_connect.php';
 
 // 1. Authorization and Method Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'company' || $_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -12,14 +12,17 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'company' || $_SERVER[
 // 2. Collect & Validate Inputs
 $student_id = isset($_POST['student_id']) ? intval($_POST['student_id']) : 0;
 $posting_id = isset($_POST['posting_id']) ? intval($_POST['posting_id']) : 0;
+$application_id = isset($_POST['application_id']) ? intval($_POST['application_id']) : 0; 
 $new_status = isset($_POST['new_status']) ? trim($_POST['new_status']) : '';
 
-if ($student_id === 0 || $posting_id === 0 || empty($new_status)) {
-    die("<script>alert('Invalid data provided for status update.'); window.history.back();</script>");
+// Define allowed statuses for strict validation
+$allowed_statuses = ['Pending', 'Interviewing', 'Hired', 'Rejected'];
+
+if ($student_id === 0 || $posting_id === 0 || $application_id === 0 || !in_array($new_status, $allowed_statuses)) {
+    die("<script>alert('Invalid data provided for status update. Missing Application ID, Posting ID, Student ID, or invalid status.'); window.history.back();</script>");
 }
 
 $user_id = $_SESSION['user_id'];
-$company_id = null;
 
 // 3. Security Check: Verify post belongs to the company
 $stmt_company = $mysqli->prepare("
@@ -40,44 +43,49 @@ if ($stmt_company) {
     }
     $stmt_company->close();
 } else {
-    die("<script>alert('Database validation error.'); window.history.back();</script>");
+    die("<script>alert('Database validation error during security check.'); window.history.back();</script>");
 }
 
-
-// 4. Update the application status
+// 4. Update the application status (Using application_id as the sole WHERE condition for simplicity and reliability)
 $query = "
-    UPDATE application 
+    UPDATE intern_application 
     SET status = ? 
-    WHERE student_id = ? AND posting_id = ?
+    WHERE application_id = ?
 ";
 
 $stmt = $mysqli->prepare($query);
 
 if ($stmt) {
-    $stmt->bind_param('sii', $new_status, $student_id, $posting_id);
+    // Bind parameters: new_status (string), application_id (integer)
+    $stmt->bind_param('si', $new_status, $application_id);
     
     if ($stmt->execute()) {
+        $rows_affected = $stmt->affected_rows;
+
         $stmt->close();
         $mysqli->close();
         
-        // Success: Redirect back to the detail view with a success message
-        $redirect_url = "view_applicant_details.php?student_id=" . $student_id . "&posting_id=" . $posting_id;
-        $_SESSION['success_message'] = "Application status successfully updated to **" . htmlspecialchars($new_status) . "**.";
-        header("Location: " . $redirect_url);
+        // Determine the success message
+        if ($rows_affected > 0) {
+            $success_message = "Application status successfully updated to: {$new_status}";
+        } else {
+            // This handles the case where the status was already set to $new_status
+            $success_message = "Status is already set to: {$new_status}";
+        }
+
+        // Success: Redirect back to the detail view
+        $redirect_url = "view_applicant_details.php?student_id=" . $student_id . "&posting_id=" . $posting_id . "&application_id=" . $application_id;
+        echo "<script>alert('{$success_message}'); window.location.href='{$redirect_url}';</script>";
         exit;
         
     } else {
         $stmt->close();
         $mysqli->close();
-        // Failure: Redirect back with an error message
-        $_SESSION['error_message'] = "Failed to update application status: " . $mysqli->error;
-        header("Location: view_applicant_details.php?student_id=" . $student_id . "&posting_id=" . $posting_id);
-        exit;
+        // Failure: Redirect back with a fatal database error
+        die("<script>alert('Failed to update application status due to database error: " . $mysqli->error . "'); window.history.back();</script>");
     }
 } else {
     $mysqli->close();
-    $_SESSION['error_message'] = "Database preparation error: " . $mysqli->error;
-    header("Location: view_applicant_details.php?student_id=" . $student_id . "&posting_id=" . $posting_id);
-    exit;
+    die("<script>alert('Database preparation error: " . $mysqli->error . "'); window.history.back();</script>");
 }
 ?>

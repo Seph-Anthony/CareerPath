@@ -205,7 +205,7 @@ $fullName = htmlspecialchars($applicant_data['first_name'] . ' ' . $applicant_da
                         <select name="new_status" id="new_status" required>
                             <option value="Pending" <?php if ($current_status == 'Pending') echo 'selected'; ?>>Pending (Reviewing)</option>
                             <option value="Interviewing" <?php if ($current_status == 'Interviewing') echo 'selected'; ?>>Interviewing</option>
-                            <option value="Accepted" <?php if ($current_status == 'Accepted') echo 'selected'; ?>>Accepted (Offer Sent)</option>
+                            <option value="Hired" <?php if ($current_status == 'Hired') echo 'selected'; ?>>Accepted (Offer Sent)</option>
                             <option value="Rejected" <?php if ($current_status == 'Rejected') echo 'selected'; ?>>Rejected</option>
                         </select>
 
