@@ -1,0 +1,87 @@
+/* assign_task.css */
+
+/* Reusing or defining the general form card style for consistency */
+.form-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+/* Task List Styles */
+.task-list {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.task-list h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.task-item {
+    background: #f7f9ff;
+    padding: 15px;
+    border-left: 5px solid #2040e3;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.task-item strong {
+    display: block;
+    font-size: 16px;
+    color: #2040e3;
+    margin-bottom: 5px;
+}
+
+.task-item p {
+    margin: 5px 0 8px 0;
+}
+
+/* Status Badges */
+.task-status-pending { 
+    background: #ffeeba; 
+    color: #856404; 
+    padding: 3px 8px; 
+    border-radius: 3px; 
+    font-size: 12px; 
+    font-weight: 600; 
+}
+
+.task-status-completed { 
+    background: #d4edda; 
+    color: #155724; 
+    padding: 3px 8px; 
+    border-radius: 3px; 
+    font-size: 12px; 
+    font-weight: 600; 
+}
+
+.task-status-inprogress { 
+    background: #cce5ff; 
+    color: #004085; 
+    padding: 3px 8px; 
+    border-radius: 3px; 
+    font-size: 12px; 
+    font-weight: 600; 
+}
+
+.task-status-awaitingreview { 
+    background: #fff0f5; 
+    color: #800080; 
+    padding: 3px 8px; 
+    border-radius: 3px; 
+    font-size: 12px; 
+    font-weight: 600; 
+}
+
+.task-status-canceled { 
+    background: #f8d7da; 
+    color: #721c24; 
+    padding: 3px 8px; 
+    border-radius: 3px; 
+    font-size: 12px; 
+    font-weight: 600; 
+}

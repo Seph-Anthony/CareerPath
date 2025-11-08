@@ -33,7 +33,7 @@ if (!$company_id) {
 }
 
 // 2. Query to fetch Hired Interns for this company
-// NOTE: We assume 'Hired' is the final status for an active intern based on the database structure.
+// NOTE: We assume 'Hired' is the current status for an active intern. We exclude 'Completed' and 'Terminated'.
 $query = "
     SELECT 
         s.student_id,
@@ -123,9 +123,17 @@ $mysqli->close();
                                 <td><?php echo htmlspecialchars($intern['first_name'] . ' ' . $intern['last_name']); ?></td>
                                 <td><?php echo htmlspecialchars($intern['posting_title']); ?></td>
                                 <td><?php echo htmlspecialchars($intern['course']); ?></td>
-                                <td>
-                                    <a href="view_intern_activity.php?student_id=<?php echo $intern['student_id']; ?>&application_id=<?php echo $intern['application_id']; ?>" class="btn-view">
-                                        <i class="fa-solid fa-eye"></i> View Progress
+                                <td style="display: flex; gap: 8px;"> 
+                                    <a href="view_intern_activity.php?student_id=<?php echo $intern['student_id']; ?>&application_id=<?php echo $intern['application_id']; ?>" class="btn-view progress-log-btn">
+                                        <i class="fa-solid fa-eye"></i> View Log
+                                    </a>
+                                    
+                                    <a href="assign_task.php?student_id=<?php echo $intern['student_id']; ?>&application_id=<?php echo $intern['application_id']; ?>" class="btn-view" style="background: #ff7f00;">
+                                        <i class="fa-solid fa-list-check"></i> Assign Task
+                                    </a>
+
+                                    <a href="intern_evaluation.php?student_id=<?php echo $intern['student_id']; ?>&application_id=<?php echo $intern['application_id']; ?>" class="btn-view evaluate-btn">
+                                        <i class="fa-solid fa-star"></i> Evaluate
                                     </a>
                                 </td>
                             </tr>

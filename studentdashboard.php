@@ -72,18 +72,23 @@ $mysqli->close();
     <title>Student Dashboard | Career Path</title>
     <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="studentdashboard.css">
-   
+    
 </head>
 <body>
 
     <div class="sidebar">
         <div class="logo">Career Path</div>
         <nav class="menu">
-            <a href="#" class="nav-link active"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-file-contract"></i> My Applications</a>
+            <a href="studentdashboard.php" class="nav-link active"><i class="fa-solid fa-house"></i> Dashboard</a>
+            
+            <a href="studentdashboard.php#job_listings" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
+            <a href="my_applications.php" class="nav-link"><i class="fa-solid fa-file-contract"></i> My Applications</a>
+            
+            <a href="daily_log_submission.php" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Daily Log</a> 
+            
+            <a href="student_tasks.php" class="nav-link"><i class="fa-solid fa-list-check"></i> My Tasks</a>
             <a href="#" class="nav-link"><i class="fa-solid fa-user-circle"></i> Profile & Resume</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
 
@@ -131,7 +136,7 @@ $mysqli->close();
                 </div>
             </section>
 
-            <div class="available-jobs section-container">
+            <div class="available-jobs section-container" id="job_listings">
                 <h2><i class="fas fa-handshake"></i> Active Internship Opportunities (<?php echo count($job_posts); ?>)</h2>
                 <div> 
                 

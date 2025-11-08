@@ -1,6 +1,4 @@
-/* intern_progress.css - Styling for the active intern list and activity page elements */
 
-/* --- Intern List Table (used on intern_progress.php) --- */
 
 .progress-table {
     width: 100%;
@@ -26,18 +24,50 @@
 .progress-table tr:hover {
     background-color: #fafafa;
 }
+
+/* --- Action Buttons Layout --- */
+.action-buttons-cell {
+    display: flex;
+    gap: 12px; /* Space between the buttons */
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Base button style */
 .btn-view {
-    background-color: #2040e3;
+    background-color: #2040e3; /* Blue for View Log */
     color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 8px 14px;
+    border-radius: 6px;
     text-decoration: none;
     font-size: 14px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* Space between icon and text */
+    white-space: nowrap;
 }
+
 .btn-view:hover {
     background-color: #1a32b9;
+    transform: translateY(-1px);
 }
+
+/* Evaluate button style */
+.evaluate-btn {
+    background-color: #ffc107; /* Yellow/Amber for Evaluate */
+    color: #333;
+}
+
+.evaluate-btn:hover {
+    background-color: #e0a800;
+}
+
+/* Remove margin-right since gap now controls spacing */
+.progress-log-btn {
+    margin-right: 0;
+}
+
 .no-interns {
     padding: 20px;
     text-align: center;
@@ -48,7 +78,6 @@
     margin-top: 20px;
 }
 
-/* --- Activity Log Styles (used on view_intern_activity.php) --- */
 
 .log-container {
     background: white;

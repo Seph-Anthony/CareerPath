@@ -1,0 +1,112 @@
+/* student_tasks.css */
+
+/* General Container for spacing */
+.task-container {
+    padding: 20px;
+}
+
+/* Individual Task Card Styling */
+.task-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-left: 5px solid #2040e3; /* Blue highlight */
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.task-card h3 {
+    margin-top: 0;
+    color: #2040e3;
+    font-size: 1.4em;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+/* Task Details */
+.task-details p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.task-details strong {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Status Update Form Layout */
+.status-form {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.status-form label {
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.status-form select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Status Update Button */
+.status-update-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.status-update-btn:hover {
+    background-color: #45a049;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-left: 10px;
+}
+
+/* Status-specific colors */
+.status-Pending { 
+    background-color: #ffeeba; /* Light Yellow */
+    color: #856404; 
+}
+.status-In-Progress { 
+    background-color: #cce5ff; /* Light Blue */
+    color: #004085; 
+}
+.status-Awaiting-Review { 
+    background-color: #fff0f5; /* Light Pink/Lavender */
+    color: #800080; 
+}
+.status-Completed { 
+    background-color: #d4edda; /* Light Green */
+    color: #155724; 
+}
+
+/* Empty State Message */
+.empty-tasks {
+    text-align: center;
+    padding: 50px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    margin-top: 30px;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 07, 2025 at 07:08 PM
+-- Generation Time: Nov 08, 2025 at 08:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -115,6 +115,31 @@ INSERT INTO `coordinator` (`coordinator_id`, `user_id`, `full_name`, `employee_i
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `daily_log`
+--
+
+CREATE TABLE `daily_log` (
+  `log_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `application_id` int(11) NOT NULL,
+  `log_date` date NOT NULL,
+  `hours_logged` decimal(4,2) NOT NULL,
+  `activities_performed` text NOT NULL,
+  `status` enum('Pending','Approved','Rejected') DEFAULT 'Pending',
+  `submitted_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `approved_by_company_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `daily_log`
+--
+
+INSERT INTO `daily_log` (`log_id`, `student_id`, `application_id`, `log_date`, `hours_logged`, `activities_performed`, `status`, `submitted_at`, `approved_by_company_id`) VALUES
+(1, 5, 5, '2025-02-22', 8.00, 'I\'ve did a lot of tasked today but I won\'t be saying them for now since this is just a test', 'Approved', '2025-11-08 18:38:42', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `evaluation`
 --
 
@@ -123,11 +148,17 @@ CREATE TABLE `evaluation` (
   `application_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `coordinator_id` int(11) NOT NULL,
   `score` decimal(10,0) NOT NULL,
   `remark` text NOT NULL,
   `submitted_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `evaluation`
+--
+
+INSERT INTO `evaluation` (`evaluation_id`, `application_id`, `company_id`, `student_id`, `score`, `remark`, `submitted_at`) VALUES
+(5, 3, 3, 6, 5, 'He is a very good student who does well on his job', '2025-11-08 15:38:05');
 
 -- --------------------------------------------------------
 
@@ -148,7 +179,9 @@ CREATE TABLE `intern_application` (
 --
 
 INSERT INTO `intern_application` (`application_id`, `student_id`, `posting_id`, `application_date`, `status`) VALUES
-(3, 6, 3, '2025-11-05 17:31:26', 'Hired');
+(3, 6, 3, '2025-11-05 17:31:26', 'Hired'),
+(4, 6, 4, '2025-11-08 16:30:57', 'Rejected'),
+(5, 5, 3, '2025-11-08 18:34:55', 'Hired');
 
 -- --------------------------------------------------------
 
@@ -175,6 +208,32 @@ INSERT INTO `intern_posting` (`posting_id`, `company_id`, `title`, `description`
 (1, 5, 'Julies Bakery Worker Employee', 'This is just a test to prove if it will work or not', 'Good Attitude, Good Communicating skills, and Good math skills', 2, '2025-11-01 17:42:19.934600', 'Active'),
 (3, 3, 'FOR THE HR DEPARTMENT', 'Good with computers or technology in general', 'Be knowledgeable enough for doing the coding', 2, '2025-11-05 16:59:39.593591', 'Active'),
 (4, 3, 'CONTRACTORS ASSISTANT IN BUILDING THE DECAS', 'Needing for assistance in creating the buildings on the lipata part', 'good in math and everything', 3, '2025-11-07 16:19:23.343439', 'Active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `intern_tasks`
+--
+
+CREATE TABLE `intern_tasks` (
+  `task_id` int(11) NOT NULL,
+  `application_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `task_title` varchar(255) NOT NULL,
+  `task_description` text DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
+  `status` enum('Pending','In Progress','Awaiting Review','Completed','Canceled') DEFAULT 'Pending',
+  `assigned_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `intern_tasks`
+--
+
+INSERT INTO `intern_tasks` (`task_id`, `application_id`, `company_id`, `student_id`, `task_title`, `task_description`, `due_date`, `status`, `assigned_at`) VALUES
+(1, 3, 3, 6, 'Set UP a Web Server for the HR Department', 'Make sure to have a proper knowledge before doing this project and don\'t be shy to try and ask your seniors!', '2222-02-22', 'Awaiting Review', '2025-11-08 15:54:06'),
+(2, 5, 3, 5, 'I want you to make a big motherboard', 'Try asking for help', '2227-02-24', 'Pending', '2025-11-08 18:45:10');
 
 -- --------------------------------------------------------
 
@@ -308,14 +367,22 @@ ALTER TABLE `coordinator`
   ADD KEY `coordinate_id` (`user_id`);
 
 --
+-- Indexes for table `daily_log`
+--
+ALTER TABLE `daily_log`
+  ADD PRIMARY KEY (`log_id`),
+  ADD KEY `fk_log_student` (`student_id`),
+  ADD KEY `fk_log_application` (`application_id`),
+  ADD KEY `fk_log_company_approver` (`approved_by_company_id`);
+
+--
 -- Indexes for table `evaluation`
 --
 ALTER TABLE `evaluation`
   ADD PRIMARY KEY (`evaluation_id`),
   ADD KEY `app_id` (`application_id`),
   ADD KEY `st_id` (`student_id`),
-  ADD KEY `c_id` (`company_id`),
-  ADD KEY `coor_id` (`coordinator_id`);
+  ADD KEY `c_id` (`company_id`);
 
 --
 -- Indexes for table `intern_application`
@@ -331,6 +398,15 @@ ALTER TABLE `intern_application`
 ALTER TABLE `intern_posting`
   ADD PRIMARY KEY (`posting_id`),
   ADD KEY `comp_id` (`company_id`);
+
+--
+-- Indexes for table `intern_tasks`
+--
+ALTER TABLE `intern_tasks`
+  ADD PRIMARY KEY (`task_id`),
+  ADD KEY `fk_task_application` (`application_id`),
+  ADD KEY `fk_task_company` (`company_id`),
+  ADD KEY `fk_task_student` (`student_id`);
 
 --
 -- Indexes for table `invites`
@@ -390,22 +466,34 @@ ALTER TABLE `coordinator`
   MODIFY `coordinator_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `daily_log`
+--
+ALTER TABLE `daily_log`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `evaluation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `evaluation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `intern_application`
 --
 ALTER TABLE `intern_application`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `intern_posting`
 --
 ALTER TABLE `intern_posting`
   MODIFY `posting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `intern_tasks`
+--
+ALTER TABLE `intern_tasks`
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `invites`
@@ -462,12 +550,19 @@ ALTER TABLE `coordinator`
   ADD CONSTRAINT `coordinate_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
+-- Constraints for table `daily_log`
+--
+ALTER TABLE `daily_log`
+  ADD CONSTRAINT `fk_log_application` FOREIGN KEY (`application_id`) REFERENCES `intern_application` (`application_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_log_company_approver` FOREIGN KEY (`approved_by_company_id`) REFERENCES `company` (`company_id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `fk_log_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  ADD CONSTRAINT `app_id` FOREIGN KEY (`application_id`) REFERENCES `application` (`application_id`),
   ADD CONSTRAINT `c_id` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`),
-  ADD CONSTRAINT `coor_id` FOREIGN KEY (`coordinator_id`) REFERENCES `coordinator` (`coordinator_id`),
+  ADD CONSTRAINT `fk_intern_application_id` FOREIGN KEY (`application_id`) REFERENCES `intern_application` (`application_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `st_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`);
 
 --
@@ -482,6 +577,14 @@ ALTER TABLE `intern_application`
 --
 ALTER TABLE `intern_posting`
   ADD CONSTRAINT `comp_id` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`);
+
+--
+-- Constraints for table `intern_tasks`
+--
+ALTER TABLE `intern_tasks`
+  ADD CONSTRAINT `fk_task_application` FOREIGN KEY (`application_id`) REFERENCES `intern_application` (`application_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_task_company` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_task_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `invites`
