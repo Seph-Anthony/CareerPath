@@ -108,3 +108,42 @@
     color: rgb(25, 50, 190);
     text-decoration: underline;
 }
+
+
+/* --- Resume and Requirements Box --- */
+.resume-box {
+    display: flex;
+    align-items: center;
+    background: #e9f0ff; /* Very light blue background */
+    border: 1px solid #d0d8f0;
+    padding: 15px;
+    border-radius: 8px;
+    gap: 15px;
+}
+
+.resume-box .fa-file-pdf {
+    font-size: 2.5em;
+    color: #dc3545; /* Red icon for PDF */
+}
+
+.resume-box strong {
+    font-weight: 700;
+    color: #333;
+}
+
+/* Specific colors for Validation Status inline in the HTML */
+.status-validated { color: #28a745; } /* Green */
+.status-pending-validation { color: #ffc107; } /* Yellow */
+.status-not-uploaded { color: #dc3545; } /* Red */
+
+/* Download Link Style */
+.resume-box .action-link {
+    color: rgb(32, 64, 227);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: auto; /* Pushes the link to the far right */
+    white-space: nowrap;
+}
+.resume-box .action-link:hover {
+    text-decoration: underline;
+}

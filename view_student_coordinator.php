@@ -153,15 +153,19 @@ $mysqli->close();
             <div>
                 <strong>Resume File:</strong> <?php echo $student_data['file_name'] ? htmlspecialchars($student_data['file_name']) : 'No File Uploaded'; ?>
                 <br>
+                <?php 
+                    $color_class = 'status-not-uploaded';
+                    if ($resume_status == 'Validated') {
+                        $color_class = 'status-validated';
+                    } else if ($resume_status == 'Pending') {
+                        $color_class = 'status-pending-validation'; 
+                    }
+                ?>
                 <strong>Validation Status:</strong> 
-                <span style="font-weight: 700; color: <?php 
-                    if ($resume_status == 'Validated') echo '#28a745'; 
-                    else if ($resume_status == 'Pending') echo '#ffc107'; 
-                    else echo '#dc3545'; 
-                ?>"><?php echo $resume_status; ?></span>
+                <span class="<?php echo $color_class; ?>"><?php echo $resume_status; ?></span>
             </div>
             <?php if ($student_data['file_name']): ?>
-                <a href="download_resume.php?file=<?php echo htmlspecialchars($student_data['file_name']); ?>" target="_blank" class="action-link" style="margin-left: auto;">
+                <a href="download_resume.php?file=<?php echo htmlspecialchars($student_data['file_name']); ?>" target="_blank" class="action-link">
                     <i class="fa-solid fa-download"></i> Download Resume
                 </a>
             <?php endif; ?>
