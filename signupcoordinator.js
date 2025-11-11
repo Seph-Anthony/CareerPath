@@ -77,9 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return alert("Passwords do not match. Please check again.");
         }
 
-        // 🛡️ C. Username Availability Check Status
+   
         if (!usernameAvailable) {
-            // Force the blur event check if user clicks submit without leaving username field
+          
             username.dispatchEvent(new Event('blur')); 
             return alert("Please wait for the username check or choose an available username.");
         }
