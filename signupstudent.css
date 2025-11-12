@@ -1,20 +1,21 @@
-/* ===== General Page Style ===== */
 body {
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
   background-color: rgb(247, 250, 252);
   height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-/* ===== Main Container ===== */
 .signup-container {
-  width: 1000px;
-
-  height: auto;
+  width: 90vw;
+  height: 90vh;
+  max-width: 1000px;
+  max-height: 700px;
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
@@ -22,7 +23,6 @@ body {
   overflow: hidden;
 }
 
-/* ===== Left Panel ===== */
 .left-panel {
   background-color: rgb(32, 64, 227);
   color: #ffffff;
@@ -32,120 +32,115 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 40px;
+  padding: 30px;
   text-align: center;
-  position: relative;
-
 }
-
 
 .left-panel a {
-  
-color:white;
-text-decoration: none;
-
+  color: white;
+  text-decoration: none;
 }
 
-
-.backbtn{
-position:absolute;
-top:80px;
-left:20px;
-font-size: 30px;
-cursor: pointer;
-transition: all 0.3s ease-in-out;
-}
-.backbtn:hover{
-transform:translateY(-3px);
-scale:1.05;
-
+.backbtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-.fa-graduation-cap{
-top:50px;
-  font-size: 100px;
+.backbtn:hover {
+  transform: translateY(-3px);
+  scale: 1.05;
+}
 
+.fa-graduation-cap {
+  font-size: 80px;
+  margin-bottom: 15px;
 }
 
 .brand-name {
-margin-bottom:10px;
+  margin-bottom: 15px;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 22px;
   font-family: "Oswald", sans-serif;
   color: #fff;
 }
-.welcome-text{
 
+.welcome-text {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .welcome-text h1 {
   font-size: 1.3rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .welcome-text p {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6;
   color: #e2e6ff;
-  width: 80%;
-
-
+  width: 100%;
 }
 
-/* ===== Right Panel ===== */
 .right-panel {
   flex: 1.2;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 30px;
   background-color: #ffffff;
+  overflow: hidden;
 }
 
-/* ===== Sign Up Form ===== */
 .signup-form {
-  width: 90%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .signup-form h2 {
   text-align: center;
   color: rgb(32, 64, 227);
   font-weight: 800;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .form-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px 30px;
+  gap: 12px 20px;
+  overflow: hidden;
 }
 
 .signup-form label {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: rgb(83, 84, 84);
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .signup-form input[type="text"],
 .signup-form input[type="password"],
+.signup-form input[type="email"],
 .signup-form select,
 .signup-form textarea {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid rgba(138, 144, 148, 0.4);
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   transition: all 0.2s ease;
   outline: none;
   font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
 .signup-form input:focus,
@@ -157,23 +152,23 @@ margin-bottom:10px;
 
 .signup-form textarea {
   resize: none;
-  height: 80px;
+  height: 70px;
   grid-column: span 2;
 }
 
-/* ===== Button ===== */
 .signup-form button {
   background-color: rgb(32, 64, 227);
   color: white;
   font-weight: 600;
   border: none;
   border-radius: 8px;
-  padding: 12px;
-  margin-top: 25px;
+  padding: 11px;
+  margin-top: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
   width: 50%;
   align-self: center;
+  font-size: 14px;
 }
 
 .signup-form button:hover {
@@ -181,12 +176,11 @@ margin-bottom:10px;
   background-color: rgb(25, 50, 190);
 }
 
-/* ===== Already Have an Account ===== */
 .signup-form p {
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   color: rgb(83, 84, 84);
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .signup-form p a {
@@ -203,12 +197,12 @@ margin-bottom:10px;
 
 .alert {
   width: 90%;
-  margin: 15px auto;
-  padding: 12px;
+  margin: 12px auto;
+  padding: 10px;
   border-radius: 8px;
   font-family: "Inter", sans-serif;
   text-align: center;
-  font-size: 15px;
+  font-size: 13px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: opacity 0.5s ease;
 }
@@ -224,5 +218,3 @@ margin-bottom:10px;
   color: #137333;
   border: 1px solid #137333;
 }
-
-

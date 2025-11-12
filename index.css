@@ -371,7 +371,7 @@ border-radius: 8px;
 }
 
 .image-container{
- width:47%;
+ width:auto;
  
  border-radius: 10px;
  padding-top:10px;
@@ -381,9 +381,9 @@ border-radius: 8px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    flex-wrap: wrap;
     flex-direction: column;
 }
+
 .innerimage1{
 
  
@@ -403,37 +403,19 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: row;
-
-
 }
-.image1{
+
+.image1, .image3{
     width:100%;
-
     object-fit: cover;
-margin:10px;
-   
+    margin-right:15px;
+    margin-bottom: 15px;
 }
 
-.image2{
-
-      width:100%;
-     
-
+.image2, .image4{
+    width:100%;
     object-fit: cover;
-  
 }
-.image3, .image4{
-
-    margin:10px;
-      width:100%;
-     
-    object-fit: cover;
-
-}
-
-
-
-
 
 .content-container{
     width: 50%;
@@ -580,51 +562,35 @@ margin:10px;
     background-color: #000000;
 }
 
-
-.footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    background-color: rgb(31, 33, 38);
-    color: rgb(222, 222, 222);
+.footer {
+  background-color: rgb(31, 33, 38);
+  color: rgb(222, 222, 222);
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-family: "Inter", sans-serif;
 }
 
-.footer1{
-    width: 90%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.footer1 li{
-    display: inline-block;
-    margin-top: 50px;
-    margin-right:20px;
-    font-weight: 500;
-    font-family: "Inter", sans-serif;
-    cursor: pointer;
-}
-.footer2{
-    width: 90%;
-    height: 250px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: row;
-    font-size: 15px;
-    font-family:  "Inter", sans-serif;
+.footer h4 {
+  margin-bottom: 10px;
+  color: #fff;
 }
 
-.ojtseekers li{
-    margin-right: 100px;
+.footer a {
+  color: #ccc;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.footer a:hover {
+  color: white;
 }
 
 .footer3{
+    width: auto;
     display: flex;
-    height: 50px;
     justify-content: center;
     align-items: center;
     border-top: solid;

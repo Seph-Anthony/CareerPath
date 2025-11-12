@@ -111,7 +111,7 @@ $mysqli->close();
             <a href="post_internship.php"><i class="fa-solid fa-file-circle-plus"></i> Post Internship</a>
             <a href="manage_applicants.php"><i class="fa-solid fa-users"></i> View Applicants</a>
             <a href="intern_progress.php" class="active"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
-            <a href="company_profile.php"><i class="fa-solid fa-user-circle"></i> Profile</a>
+            <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
             <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
         </nav>
     </aside>

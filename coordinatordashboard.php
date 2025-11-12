@@ -122,7 +122,7 @@ $mysqli->close();
   <div class="main-content">
     <header class="topbar">
       <h1>Welcome, <?php echo $coordinator_name; ?>!</h1>
-      <p>OJT Management Overview for the **<?php echo $coordinator_department; ?>** Department.</p>
+      <p>OJT Management Overview for the <?php echo $coordinator_department; ?> Department.</p>
     </header>
 
     <div class="dashboard-body">

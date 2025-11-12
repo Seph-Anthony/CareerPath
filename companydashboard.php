@@ -110,7 +110,7 @@ $mysqli->close();
         <a href="manage_applicants.php"><i class="fa-solid fa-users"></i> View Applicants</a>
         <a href="company_log_approval.php"><i class="fa-solid fa-file-signature"></i> Approve Daily Logs</a>
         <a href="intern_progress.php"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
-        <a href="company_profile.php"><i class="fa-solid fa-user-circle"></i> Profile</a>
+        <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
         <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
     </nav>
   </aside>
@@ -118,11 +118,9 @@ $mysqli->close();
   <main class="main-content">
     <header class="topbar">
         <h1>Welcome, <?php echo $company_name; ?>!</h1>
-        <div class="user-section">
             <div class="user-profile">
-                <span><?php echo $company_name; ?></span>
+               <i class="fa-solid fa-user-circle"></i> <?php echo $company_name; ?>
             </div>
-        </div>
     </header>
 
     <div class="dashboard-body">

@@ -1,6 +1,4 @@
-/*
- * companydashboard.css - FINAL AESTHETIC FIX (Horizontal Grid Stats)
- */
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -69,11 +67,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.user-profile span {
-    font-weight: 600;
-    color: #555;
 }
 
 .dashboard-body{

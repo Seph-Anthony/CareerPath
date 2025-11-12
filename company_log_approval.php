@@ -80,9 +80,27 @@ $mysqli->close();
     <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="companydashboard.css"> 
-    <link rel="stylesheet" href="company_logs.css"> </head>
+    <link rel="stylesheet" href="company_logs.css">
 </head>
 <body>
+
+<div class="dashboard-container">
+    <aside class="sidebar">
+    <div class="logo">
+      <h2>Career Path</h2>
+    </div>
+
+    <nav class="menu">
+        <a href="companydashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="post_internship.php"><i class="fa-solid fa-file-circle-plus"></i> Post Internship</a>
+        <a href="manage_applicants.php"><i class="fa-solid fa-users"></i> View Applicants</a>
+        <a href="company_log_approval.php"class="active"><i class="fa-solid fa-file-signature"></i> Approve Daily Logs</a>
+        <a href="intern_progress.php"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
+        <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
+        <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
     <div class="main-content">
         <header class="topbar">
             <h1>Daily Log Approval</h1>
@@ -124,11 +142,12 @@ $mysqli->close();
 
             <?php else: ?>
                 <div class="log-item-card" style="text-align: center;">
-                    <p>✅ **All logs are up to date!** There are no pending daily logs awaiting your approval.</p>
+                    <p>✅ All logs are up to date! There are no pending daily logs awaiting your approval.</p>
                 </div>
             <?php endif; ?>
 
         </div>
+    </div>
     </div>
     </body>
 </html>

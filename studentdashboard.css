@@ -112,7 +112,7 @@ nav {
   padding: 25px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-top: 5px solid rgb(32, 64, 227);
+  border-bottom: 5px solid rgb(32, 64, 227);
 }
 
 .status-card p {
@@ -129,7 +129,7 @@ nav {
 
 .main-status-card {
   grid-column: span 2;
-  border-top-color: rgb(25, 50, 190);
+  border-bottom: 5px solid rgb(32, 64, 227);
 }
 
 .main-status-card strong {

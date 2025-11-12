@@ -89,9 +89,9 @@ $status_options = ['Pending', 'In Progress', 'Awaiting Review', 'Completed'];
         <div class="logo">Career Path</div>
         <nav class="menu">
             <a href="studentdashboard.php" class="nav-link"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-file-contract"></i> My Applications</a>
-             <a href="daily_log_submission.php" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Daily Log</a>
+            <a href="studentdashboard.php#job_listings" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
+            <a href="my_applications.php" class="nav-link"><i class="fa-solid fa-file-contract"></i> My Applications</a>
+            <a href="daily_log_submission.php" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Daily Log</a> 
             <a href="student_tasks.php" class="nav-link active"><i class="fa-solid fa-list-check"></i> My Tasks</a>
             <a href="#" class="nav-link"><i class="fa-solid fa-user-circle"></i> Profile & Resume</a>
             <a href="index.html" class="nav-link"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>

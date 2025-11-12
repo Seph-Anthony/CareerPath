@@ -88,21 +88,25 @@ $mysqli->close();
 <div class="dashboard-container">
 
     <aside class="sidebar">
-        <div class="logo"><h2>Career Path</h2></div>
-        <nav class="menu">
-            <a href="companydashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="post_internship.php"><i class="fa-solid fa-file-circle-plus"></i> Post Internship</a>
-            <a href="manage_applicants.php"><i class="fa-solid fa-users"></i> View Applicants</a>
-            <a href="intern_progress.php" class="active"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
-            <a href="company_profile.php"><i class="fa-solid fa-user-circle"></i> Profile</a>
-            <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
-        </nav>
-    </aside>
+    <div class="logo">
+      <h2>Career Path</h2>
+    </div>
+
+    <nav class="menu">
+        <a href="companydashboard.php" ><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="post_internship.php"><i class="fa-solid fa-file-circle-plus"></i> Post Internship</a>
+        <a href="manage_applicants.php"><i class="fa-solid fa-users"></i> View Applicants</a>
+        <a href="company_log_approval.php"><i class="fa-solid fa-file-signature"></i> Approve Daily Logs</a>
+        <a href="intern_progress.php" class="active"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
+        <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
+        <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
 
     <main class="main-content">
         <header class="topbar">
             <h1>Intern Progress Tracking</h1>
-            <p>Monitoring active interns working with **<?php echo $company_name; ?>**</p>
+            <p>Monitoring active interns working with <?php echo $company_name; ?></p>
         </header>
 
         <div class="dashboard-body">
