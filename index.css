@@ -1,13 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-  
-background-color: rgb(247, 250, 252);
-
+    background-color: rgb(247, 250, 252);
 }
 
 button{
-
     cursor:pointer;
 }
 
@@ -15,23 +12,18 @@ html {
   scroll-behavior: smooth;
 }
 
-
-
 .firstsection{
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-background-color: rgb(247, 250, 252);
-
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(247, 250, 252);
 }
+
 #forseemore{
-
-
-
     color:white;
 }
+
 .firstsection a{
 
     text-decoration: none;
@@ -67,9 +59,23 @@ cursor: pointer;
     border: none;
 }
 
+.bg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.firstnav img{
+    width: 50px;
+}
+
+.title-content{
+    display: flex;
+    flex-direction: row;
+}
+
 .title{
-
-
 width:30%;
 text-align: center;
 
