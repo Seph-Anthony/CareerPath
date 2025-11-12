@@ -73,19 +73,20 @@ $mysqli->close();
     <script src="https://kit.fontawesome.com/ed5caa5a8f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="studentdashboard.css">
     <link rel="stylesheet" href="my_applications.css"> 
+    <link rel="stylesheet" href="companydashboard.css"> 
 </head>
 <body>
     <div class="sidebar">
         <div class="logo">Career Path</div>
         <nav class="menu">
-            <a href="studentdashboard.php" class="nav-link"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="studentdashboard.php#active_posts" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
-            <a href="my_applications.php" class="nav-link active"><i class="fa-solid fa-file-contract"></i> My Applications</a>
-            <a href="daily_log_submission.php" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Daily Log</a>
-            <a href="student_tasks.php" class="nav-link"><i class="fa-solid fa-list-check"></i> My Tasks</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-user-circle"></i> Profile & Resume</a>
-            <a href="#" class="nav-link"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
-        </nav>
+                <a href="studentdashboard.php" class="nav-link"><i class="fa-solid fa-house"></i> Dashboard</a>
+                <a href="#active_post" class="nav-link"><i class="fa-solid fa-briefcase"></i> Apply for OJT</a>
+                <a href="my_applications.php" class="nav-link active"><i class="fa-solid fa-file-contract"></i> My Applications</a>
+                <a href="daily_log_submission.php" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Daily Log</a>
+                <a href="student_tasks.php" class="nav-link"><i class="fa-solid fa-list-check"></i> My Tasks</a>
+                <a href="manage_requirements.php"><i class="fa-solid fa-file-upload"></i> Manage Requirements</a> 
+                <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+            </nav>
     </div>
 
     <div class="main-content">

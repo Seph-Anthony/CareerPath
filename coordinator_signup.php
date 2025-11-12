@@ -2,6 +2,7 @@
 // coordinator_signup.php
 session_start();
 require_once 'db_connect.php'; // Ensures connection to $mysqli
+require_once 'activity_logger.php'; // NEW: Include the logging utility
 
 // Helper function for error handling
 function abort_with($msg) {
@@ -77,7 +78,6 @@ try {
     $insertUser->close();
 
     // 6. Insert coordinator details into 'coordinator' table
-    // ASSUMING TABLE COLUMNS: full_name, employee_id, position, department, email, contact_number
     $insertCoordinator = $mysqli->prepare("INSERT INTO coordinator (user_id, full_name, employee_id, position, department, email, contact_number) VALUES (?, ?, ?, ?, ?, ?, ?)");
     if (!$insertCoordinator) {
         throw new Exception('Failed to prepare coordinator insert. Check table schema.');
@@ -93,15 +93,28 @@ try {
     // Commit transaction if all inserts succeed
     $mysqli->commit();
 
+    // --- NEW: Dynamic Activity Logging (Must be AFTER commit) ---
+    $safe_full_name = htmlspecialchars($full_name);
+    $safe_username = htmlspecialchars($username);
+    $safe_status = htmlspecialchars($status);
+    $log_message = "A new coordinator, **$safe_full_name** (Username: **$safe_username**), successfully registered with status **$safe_status**.";
+    log_activity($mysqli, $log_message);
+
+    // Close connection
+    $mysqli->close(); 
+
     // Success message and redirect
     echo "<script>
             alert('Coordinator registration successful! You can now sign in.');
             window.location.href = 'signincoordinator.html';
           </script>";
+    exit;
 
 } catch (Exception $e) {
     // Rollback transaction on any error
     $mysqli->rollback();
+    // Close connection after rollback
+    $mysqli->close(); 
     abort_with('Registration failed due to a server error. Please try again. (' . $e->getMessage() . ')');
 }
 ?>

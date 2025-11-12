@@ -1,7 +1,9 @@
 <?php
-// company_signin.php
+// company_signin.php - Handles company authentication and logs successful sign-ins
+
 session_start();
 require_once 'db_connect.php'; 
+require_once 'activity_logger.php'; // NEW: Include the logging utility
 
 // Helper function for login failure
 function login_failure($msg) {
@@ -24,6 +26,7 @@ if ($username === '' || $password === '') {
 // 2. Prepare and execute query to fetch user data
 $stmt = $mysqli->prepare("SELECT user_id, password, role, status FROM users WHERE username = ? LIMIT 1");
 if (!$stmt) {
+    error_log('Company sign-in prepared statement failed: ' . $mysqli->error);
     login_failure('A server error occurred. Please try again. (DB Error)');
 }
 
@@ -40,6 +43,7 @@ $user = $result->fetch_assoc();
 $stmt->close();
 
 // 3. Verify password and role
+$user_id = $user['user_id'];
 $hashed_password = $user['password'];
 $user_role = $user['role'];
 $user_status = $user['status'];
@@ -56,8 +60,26 @@ if (password_verify($password, $hashed_password)) {
         login_failure('Your account is currently ' . $user_status . '. Please contact the coordinator for assistance.');
     }
 
+    // --- NEW: Dynamic Activity Logging (Before setting session) ---
+    // Fetch company name for the log entry
+    $company_name = $username; 
+    $stmt_name = $mysqli->prepare("SELECT company_name FROM company WHERE user_id = ? LIMIT 1");
+    if ($stmt_name) {
+        $stmt_name->bind_param('i', $user_id);
+        $stmt_name->execute();
+        $result_name = $stmt_name->get_result();
+        if ($result_name->num_rows > 0) {
+            $name_data = $result_name->fetch_assoc();
+            $company_name = htmlspecialchars($name_data['company_name']);
+        }
+        $stmt_name->close();
+    }
+    
+    $log_message = "Company user **$company_name** (Username: **$username**) successfully signed in.";
+    log_activity($mysqli, $log_message); // Log the event!
+
     // 4. Successful Login: Set Session Variables
-    $_SESSION['user_id'] = $user['user_id'];
+    $_SESSION['user_id'] = $user_id;
     $_SESSION['username'] = $username;
     $_SESSION['role'] = $user_role;
     $_SESSION['logged_in'] = true;
@@ -69,5 +91,10 @@ if (password_verify($password, $hashed_password)) {
 } else {
     // Password verification failed
     login_failure('Invalid username or password.');
+}
+
+// Close connection if not already closed by exit()
+if ($mysqli) {
+    $mysqli->close();
 }
 ?>

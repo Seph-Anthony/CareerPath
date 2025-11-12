@@ -61,13 +61,15 @@ $mysqli->close();
       <h2>Career Path</h2>
     </div>
 
-    <nav class="menu">
-      <a href="coordinatordashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-      <a href="manage_students.php"><i class="fa-solid fa-user-graduate"></i> Manage Students</a>
-      <a href="manage_companies.php"><i class="fa-solid fa-building"></i> Manage Companies</a>
-      <a href="manage_placements.php" class="active"><i class="fa-solid fa-clipboard-list"></i> Placements/OJT</a>
-      <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
-    </nav>
+   <nav class="menu">
+            <a href="coordinatordashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="manage_students.php"><i class="fa-solid fa-user-graduate"></i> Manage Students</a>
+            <a href="manage_applications.php"><i class="fa-solid fa-clipboard-check"></i> Review Applications</a> 
+            <a href="manage_companies.php"><i class="fa-solid fa-building"></i> Manage Companies</a>
+            <a href="manage_placements.php" class="active"><i class="fa-solid fa-clipboard-list"></i> Placements/OJT</a>
+            <a href="manage_evaluations.php"><i class="fa-solid fa-clipboard-check"></i> Review Evaluations</a> 
+            <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+        </nav>
   </aside>
 
   <div class="main-content">

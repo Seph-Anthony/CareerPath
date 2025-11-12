@@ -98,7 +98,7 @@ $mysqli->close();
         <a href="manage_applicants.php"><i class="fa-solid fa-users"></i> View Applicants</a>
         <a href="company_log_approval.php"><i class="fa-solid fa-file-signature"></i> Approve Daily Logs</a>
         <a href="intern_progress.php" class="active"><i class="fa-solid fa-chart-line"></i> Intern Progress</a>
-        <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
+   <a href="companyprofile.php"><i class="fa-solid fa-user-circle"></i> Edit Information</a>
         <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
     </nav>
   </aside>

@@ -13,9 +13,11 @@ body {
 
 .signup-container {
   width: 90vw;
-  height: 90vh;
+  /* FIX: Changed height to min-height, allowing it to expand */
+  min-height: 90vh; 
   max-width: 1000px;
-  max-height: 700px;
+  /* FIX: Increased max-height significantly to ensure all form fields fit */
+  max-height: 950px; 
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
@@ -94,16 +96,17 @@ body {
   align-items: center;
   padding: 30px;
   background-color: #ffffff;
+  /* Reverted from overflow-y: auto to rely on increased container size */
   overflow: hidden;
 }
 
 .signup-form {
   width: 100%;
-  height: 100%;
+  /* Removed height: 100% to allow flexible height inside the container */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible; /* Ensure nothing is cut off */
 }
 
 .signup-form h2 {
@@ -117,7 +120,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px 20px;
-  overflow: hidden;
+  overflow: visible; /* Ensure content is visible */
 }
 
 .signup-form label {
@@ -217,4 +220,28 @@ body {
   background-color: #e3ffe9;
   color: #137333;
   border: 1px solid #137333;
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+    min-height: 100vh;
+    max-height: unset;
+    border-radius: 0;
+    overflow: auto; /* Allow scroll on smaller screens */
+  }
+
+  .left-panel {
+    min-height: 250px;
+    padding-top: 50px;
+  }
+
+  .backbtn {
+    top: 15px;
+    left: 15px;
+  }
+
+  .right-panel {
+    overflow: visible;
+  }
 }

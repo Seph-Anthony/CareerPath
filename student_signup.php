@@ -2,9 +2,11 @@
 // student_signup.php
 session_start();
 require_once 'db_connect.php'; 
+require_once 'activity_logger.php'; // NEW: Include the logging utility
 
 // --- Helper Function ---
 function handleError(mysqli $mysqli, $message) {
+    // Attempt to roll back if the connection is still alive, ensuring data integrity.
     if ($mysqli->ping()) {
         if ($mysqli->begin_transaction()) {
             $mysqli->rollback();
@@ -15,7 +17,7 @@ function handleError(mysqli $mysqli, $message) {
     die("<script>
             alert('" . addslashes($message) . "'); 
             window.history.back();
-         </script>");
+           </script>");
 }
 
 // --- Input Collection and Validation ---
@@ -24,19 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Collect and trim inputs for Student Table
-$first_name  = isset($_POST['first_name'])   ? trim($_POST['first_name'])   : '';
-$last_name   = isset($_POST['last_name'])    ? trim($_POST['last_name'])    : '';
-$course      = isset($_POST['course'])       ? trim($_POST['course'])       : '';
-$year_level  = isset($_POST['year_level'])   ? trim($_POST['year_level'])   : '';
-$description = isset($_POST['description'])  ? trim($_POST['description'])  : NULL;
-$status      = isset($_POST['status'])       ? trim($_POST['status'])       : 'Active'; 
+$first_name     = isset($_POST['first_name'])    ? trim($_POST['first_name'])     : '';
+$last_name      = isset($_POST['last_name'])     ? trim($_POST['last_name'])      : '';
+$course         = isset($_POST['course'])        ? trim($_POST['course'])         : '';
+$year_level     = isset($_POST['year_level'])    ? trim($_POST['year_level'])     : '';
+$description    = isset($_POST['description'])   ? trim($_POST['description'])    : NULL;
+$status         = isset($_POST['status'])        ? trim($_POST['status'])         : 'Active'; 
 
 // Collect and trim inputs for Users Table & Student Contact Info
-$email          = isset($_POST['email'])          ? trim($_POST['email'])          : '';
-$phone_number   = isset($_POST['contact'])        ? trim($_POST['contact'])        : '';
-$username       = isset($_POST['username'])       ? trim($_POST['username'])       : '';
-$password       = isset($_POST['password'])       ? $_POST['password']             : '';
-$role           = isset($_POST['role'])           ? trim($_POST['role'])           : 'student';
+$email          = isset($_POST['email'])         ? trim($_POST['email'])          : '';
+$phone_number   = isset($_POST['contact'])       ? trim($_POST['contact'])        : '';
+$username       = isset($_POST['username'])      ? trim($_POST['username'])       : '';
+$password       = isset($_POST['password'])      ? $_POST['password']             : '';
+$role           = isset($_POST['role'])          ? trim($_POST['role'])           : 'student';
 
 
 if (empty($username) || empty($password) || empty($first_name) || empty($email) || empty($phone_number)) {
@@ -84,13 +86,19 @@ try {
 
     // 4. Both queries succeeded, commit the transaction
     $mysqli->commit();
-    $mysqli->close();
+    
+    // --- NEW: Dynamic Activity Logging (Must be AFTER commit) ---
+    $full_name = htmlspecialchars($first_name . ' ' . $last_name);
+    $log_message = "A new student, **$full_name** (Username: **$username**), successfully registered.";
+    log_activity($mysqli, $log_message); 
+    
+    $mysqli->close(); // Close connection after everything is done
 
     // Success message and redirect
     die("<script>
             alert('Student registration successful! You can now sign in.');
             window.location.href = 'signinstudent.html';
-          </script>");
+         </script>");
 
 } catch (Exception $e) {
     // 5. Something failed, roll back all changes
@@ -106,9 +114,6 @@ try {
     }
 
     // Final alert and redirect
-    die("<script>
-            alert('" . addslashes($user_friendly_msg) . "'); 
-            window.history.back();
-         </script>");
+    handleError($mysqli, $user_friendly_msg);
 }
 ?>

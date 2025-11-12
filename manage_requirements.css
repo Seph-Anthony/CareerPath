@@ -1,0 +1,202 @@
+/* General Layout Adaptation */
+.dashboard-body {
+    padding: 20px;
+}
+
+.profile-card h2, .upload-card h2, .history-card h2 {
+    color: rgb(32, 64, 227);
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Profile Details Card */
+.profile-card {
+    margin-bottom: 30px;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.profile-details p strong {
+    display: inline-block;
+    width: 120px;
+    font-weight: 600;
+    color: #555;
+}
+
+.btn-edit-profile {
+    background-color: #f0f4ff;
+    color: rgb(32, 64, 227);
+    border: 1px solid rgb(32, 64, 227);
+    padding: 8px 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: not-allowed; 
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Upload Form Styling */
+.upload-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="file"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.form-group select {
+    appearance: none; 
+    background: white url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%234a5568'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e") no-repeat right 10px center;
+    background-size: 15px;
+}
+
+.btn-primary {
+    background-color: rgb(32, 64, 227);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    margin-top: 10px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary:hover {
+    background-color: rgb(25, 50, 190);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(32, 64, 227, 0.2);
+}
+
+.required {
+    color: #e74c3c;
+    font-size: 16px;
+}
+
+
+/* Alerts/Messages */
+.alert {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Requirements Table Styling */
+.requirements-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.requirements-table th, .requirements-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.requirements-table th {
+    background-color: #f0f4ff;
+    color: rgb(32, 64, 227);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.requirements-table tbody tr:hover {
+    background-color: #f7f9ff;
+}
+
+.status-tag {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+}
+.status-pending { background-color: #fff3cd; color: #856404; }
+.status-rejected { background-color: #f8d7da; color: #721c24; }
+.status-approved { background-color: #d4edda; color: #155724; }
+
+.btn-small-download {
+    background-color: #5bc0de;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-small-download:hover {
+    background-color: #31b0d5;
+}
+
+.empty-state-text {
+    text-align: center;
+    color: #999;
+    padding: 30px 0;
+    font-style: italic;
+}
+
+@media (min-width: 768px) {
+    .upload-form {
+        grid-template-columns: 1fr 1fr 200px;
+        align-items: end;
+    }
+    .form-group:last-child {
+        grid-column: span 1;
+    }
+    .btn-primary {
+        width: 100%;
+    }
+}

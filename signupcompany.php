@@ -2,6 +2,7 @@
 // signupcompany.php
 // Assumes 'db_connect.php' defines the connection object as $mysqli
 require_once 'db_connect.php'; 
+require_once 'activity_logger.php'; // NEW: Include the logging utility
 
 // Function to handle errors and redirect (ensures cleanup)
 function handleError(mysqli $mysqli, $message) {
@@ -34,7 +35,7 @@ $username       = isset($_POST['username']) ? trim($_POST['username']) : '';
 $password       = isset($_POST['password']) ? $_POST['password'] : '';
 
 $role           = "company"; // Fixed role
-$status         = "Pending"; // <--- CRITICAL CHANGE: Set initial status for companies to Pending
+$status         = "Pending"; // CRITICAL: Set initial status for companies to Pending
 
 // Simple check for required fields
 if (empty($username) || empty($password) || empty($company_name) || empty($email) || empty($address) || empty($contact_person)) {
@@ -50,14 +51,12 @@ $mysqli->autocommit(FALSE);
 
 try {
     // 3️⃣ Insert user account into `users` table
-    // MODIFICATION: Explicitly include 'status' in the columns and binding
     $insertUser = $mysqli->prepare("INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)");
     
     if (!$insertUser) {
         throw new Exception("Prepare statement failed (users): " . $mysqli->error);
     }
     
-    // 'ssss' for 4 string parameters: username, hashed_password, role, status
     $insertUser->bind_param('ssss', $username, $hashed_password, $role, $status);
     $ok1 = $insertUser->execute();
     $user_id = $mysqli->insert_id;
@@ -74,7 +73,6 @@ try {
         throw new Exception("Prepare statement failed (company): " . $mysqli->error);
     }
 
-    // i for user_id (int), ssssss for the 6 string parameters
     $insertCompany->bind_param('issssss', $user_id, $company_name, $industry, $address, $contact_person, $email, $phone_number);
     $ok2 = $insertCompany->execute();
 
@@ -86,13 +84,20 @@ try {
 
     // 5️⃣ Both queries succeeded, commit the transaction
     $mysqli->commit();
-    $mysqli->close();
+    
+    // --- NEW: Dynamic Activity Logging (Must be AFTER commit) ---
+    $safe_company_name = htmlspecialchars($company_name);
+    $safe_username = htmlspecialchars($username);
+    $log_message = "A new company, **$safe_company_name** (Username: **$safe_username**), registered with status **$status**.";
+    log_activity($mysqli, $log_message); 
+
+    $mysqli->close(); // Close connection after everything is done
 
     // Success message and redirect (Updated message to reflect Pending status)
     die("<script>
             alert('Company registration successful! Your account is pending review by the Coordinator. You will be able to sign in once approved.');
             window.location.href = 'signincompany.html';
-         </script>");
+           </script>");
 
 } catch (Exception $e) {
     // 6️⃣ Something failed, roll back all changes
@@ -113,5 +118,7 @@ try {
 }
 
 // Close connection if not already closed
-$mysqli->close();
+if ($mysqli) {
+    $mysqli->close();
+}
 ?>
